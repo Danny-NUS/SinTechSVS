@@ -37,10 +37,10 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </thead>
     <tbody>
         <tr>
-            <td>Pitch Singing Techniques</td>
-            <td>Word-level Sample 1</td>
-            <td>Word-level Sample 2</td>
-            <td>Sentence-level Sample</td>
+            <td><center>Pitch Singing Techniques</center></td>
+            <td><center>Word-level Sample 1</center></td>
+            <td><center>Word-level Sample 2</center></td>
+            <td><center>Sentence-level Sample</center></td>
         </tr>
         <tr>
             <td>Scooping</td>
