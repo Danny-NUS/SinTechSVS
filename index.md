@@ -32,7 +32,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <table>
     <thead>
         <tr>
-            <th colspan="3">Singing Voice Samples of Pitch Singing Techniques</th>
+            <th colspan="4">Singing Voice Samples of Pitch Singing Techniques</th>
         </tr>
     </thead>
     <tbody>
@@ -57,7 +57,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
                 </audio>
             </td>
             <td>
-                <span style="text-decoration: underline; font-weight: bold; color: red;">具(ju)</span> 象(xiang)
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">具(ju)</span> 象(xiang)
+                </center>c
                 <br>
                 <audio controls>
                   <source src="2002000053_ju_scooping.wav" type="audio/mpeg">
