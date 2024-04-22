@@ -60,7 +60,6 @@ We provide the annotation of the dataset and its detail on the appendix website 
                 <center>
                     <span style="text-decoration: underline; font-weight: bold; color: red;">具(ju)</span> 象(xiang)
                 </center>
-                <br>
                 <audio controls>
                   <source src="2031001168_ju_scooping.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
