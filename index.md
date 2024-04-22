@@ -38,7 +38,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td>Scooping</td>
-            <td><audio src="2002000053_7_scooping.wav"></audio></td>
+            <td><source src="2002000053_7_scooping.wav" type="audio/mpeg"></td>
             <td><audio src="2002000053_7_scooping.wav"></td>
         </tr>
         <tr>
