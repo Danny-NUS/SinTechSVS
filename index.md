@@ -28,7 +28,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 
 
 <div style="text-align: center;">
-    <img src="COSIAN_LOGO.png" width="300px">
+    <img src="overall-1.png" width="300px">
 </div>
 
 
