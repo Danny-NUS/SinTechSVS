@@ -59,7 +59,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
             <td>
                 <center>
                     <span style="text-decoration: underline; font-weight: bold; color: red;">具(ju)</span> 象(xiang)
-                </center>c
+                </center>
                 <br>
                 <audio controls>
                   <source src="2002000053_ju_scooping.wav" type="audio/mpeg">
