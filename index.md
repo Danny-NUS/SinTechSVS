@@ -39,8 +39,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
         <tr>
             <td>Scooping</td>
             <td style="text-align: center">
-                <audio controls="controls">
-                    <source src="2002000053_7_scooping.wav" type="audio/mpeg" />Your browser does not support the audio element.                 </audio>
+                <a href="2002000053_7_scooping.wav" download>Download Audio</a>
             </td>
             <td><audio src="2002000053_7_scooping.wav"></td>
         </tr>
