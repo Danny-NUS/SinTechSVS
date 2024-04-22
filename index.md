@@ -2,7 +2,7 @@
 ## Junchuan Zhao, Low Qi Hong Chetwin, Ye Wang
 
 <!-- ### Abstract of the paper
-```
+``
 Singing techniques in vocal performances are important and have close relationships to singers’ singing styles. Each professional singer of popular music has a unique singing style, that is, the use of singing techniques. We focused on singing techniques within the scope of music information retrieval research.We investigated how singers use singing techniques using real-world recordings of famous solo singers in Japanese popular music songs (J-POP). First, we built a new dataset of singing techniques. The dataset consists of 168 commercial J-POP songs, and each song is annotated using various singing techniques with timestamps and vocal pitch contours.We also present descriptive statistics of singing techniques on the dataset to clarify what and how often singing techniques appear.We further explored the difficulty of the automatic detection of singing techniques using previously proposed machine learning techniques. In the identification, we also investigated the effectiveness of auxiliary information (i.e., pitch and distribution of label duration), not only providing the baseline. 
 We provide the some metadata and annotation of the dataset https://yamathcy.github.io/ISMIR2022J-POP/.
 
@@ -15,10 +15,12 @@ We provide the some metadata and annotation of the dataset https://yamathcy.gith
 
 ### Abstract of the paper
 
-The precise control of singing techniques is of utmost importance in achieving emotionally expressive vocal performances. To bridge the gap between current Singing Voice Synthesis (SVS) systems and human singers, our paper focuses on developing an SVS system that allows for control over singing techniques. 
-In this paper, we introduce SinTechSVS, a singing technique controllable SVS system composed of a singing technique annotator, a singing technique controllable synthesizer, and a singing technique recommender. Our approach leverages transfer learning for efficient singing technique annotation and adapts the DiffSinger framework with additional style encoders and an attention-based singing technique local score (STLS) module to enhance singing technique controllability. 
-We also propose a Seq2Seq singing technique recommender for the new task of Singing Technique Recommendation (STR). 
-Experimental results demonstrate that SinTechSVS significantly improves the quality and expressiveness of synthesized vocal performances, with comparable general synthesis capabilities to state-of-the-art SVS systems and enhanced control over singing techniques, as evidenced by objective and subjective evaluations. To the best of our knowledge, SinTechSVS is the first SVS capable of controlling singing techniques. 
+<div style="text-align: justify">
+    The precise control of singing techniques is of utmost importance in achieving emotionally expressive vocal performances. To bridge the gap between current Singing Voice Synthesis (SVS) systems and human singers, our paper focuses on developing an SVS system that allows for control over singing techniques. 
+    In this paper, we introduce SinTechSVS, a singing technique controllable SVS system composed of a singing technique annotator, a singing technique controllable synthesizer, and a singing technique recommender. Our approach leverages transfer learning for efficient singing technique annotation and adapts the DiffSinger framework with additional style encoders and an attention-based singing technique local score (STLS) module to enhance singing technique controllability. 
+    We also propose a Seq2Seq singing technique recommender for the new task of Singing Technique Recommendation (STR). 
+    Experimental results demonstrate that SinTechSVS significantly improves the quality and expressiveness of synthesized vocal performances, with comparable general synthesis capabilities to state-of-the-art SVS systems and enhanced control over singing techniques, as evidenced by objective and subjective evaluations. To the best of our knowledge, SinTechSVS is the first SVS capable of controlling singing techniques. 
+</div>
 
 <!-- ### 
 We provide the annotation of the dataset and its detail on the appendix website (this site). https://yamathcy.github.io/ISMIR2022J-POP/ 
@@ -30,6 +32,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <img src="overall-1.png" width="1000px">
 </div>
 
+<div style="text-align: justify">
+    SinTechSVS consists of three key components: singing technique annotator (STA), singing voice synthesizer conditioned on singing techniques (SVS), and singing technique recommender (STR). The 'OR' symbol in this figure means that the input of SVS is either by a user-input singing technique sequence or the predicted singing technique sequence from the singing technique recommender. 
+</div>
 
 #### Description
 We built a new dataset named **COSIAN** (a COllection of SInging voice ANnotation) to conduct the analysis.
