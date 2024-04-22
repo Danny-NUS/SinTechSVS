@@ -52,7 +52,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
             </td>
             <td>
                 <audio controls>
-                  <source src="2002000053_11_scooping (1).wav" type="audio/mpeg">
+                  <source src="2001000020_11_scooping.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
@@ -62,7 +62,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
                 </center>
                 <br>
                 <audio controls>
-                  <source src="2002000053_ju_scooping.wav" type="audio/mpeg">
+                  <source src="2031001168_ju_scooping.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
