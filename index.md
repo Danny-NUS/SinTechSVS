@@ -36,19 +36,12 @@ We provide the annotation of the dataset and its detail on the appendix website 
     SinTechSVS consists of three key components: singing technique annotator (STA), singing voice synthesizer conditioned on singing techniques (SVS), and singing technique recommender (STR). The 'OR' symbol in this figure means that the input of SVS is either by a user-input singing technique sequence or the predicted singing technique sequence from the singing technique recommender. 
 </div>
 
-#### Description
-We built a new dataset named **COSIAN** (a COllection of SInging voice ANnotation) to conduct the analysis.
-COSIAN is an annotation collection of Japanese popular (J-POP) songs, focusing on singing style and expression of famous solo-singers.
+### Singing Techniques
+<div style="text-align: justify">
+    In this section, we provide samples of singing techniques included in our research.
+</div>
 
-It consists of various **168 songs**.
-There are 21 female- and 21 male singers. Each singer has four songs that have different moods from each other.
 
-### What is the motivation?
-**Understanding the singing voice more**
-
-The basic concept of the work is **analyzing the singers' characteristics by clarification of how they render the song**.
-One of the naive ways to realize it is annotating the presence of **singing techniques**, which are produced by fluctuating the pitch, timbre, etc. 
-However, there are no such datasets, so we decided to build it.
 
 #### Metadata
 It contains songlist. it contains following information;
@@ -227,27 +220,4 @@ We confirmed that one of the common mis-detection cases is from the detection of
 </table>
 
 ### Contact
-If you have any questions about the paper, please contact the first author Yuya. We also accept issues in [github repository](https://github.com/yamathcy/ISMIR2022J-POP/issues).
-
-<a id="license"></a>
-### License
-The COSIAN contains copyright material.
-We share COSIAN with researchers under the following conditions:
-
-- COSIAN may only be used by the individual signing below and by members of the research group or organisation of this individual. This permission is not transferable.
-- COSIAN may be used only for non-commercial research purposes.
-- COSIAN (or data enabling the its reproduction) may not be sold, leased, published or distributed to any third party without written permission from the COSIAN administrator.
-
-University of Tsukuba and KAIST shall not be held liable for any errors in the content of COSIAN nor damage arising from the use of COSIAN.
-The COSIAN administrator may update these conditions of use at any time.
-
-### Citation 
-Cite the ISMIR 2022 paper.
-```
-@inproceedings{yamamoto2022analysis,
-         author = {Yamamoto, Yuya and Nam, Juhan and Terasawa, Hiroko},
-         title = {Analysis and Detection of Singing Techniques in Repertoires of J-POP solo singers},
-         booktitle = {Proceedings of the 23rd International Society for Music Information Retrieval Conference (ISMIR)},
-         year = {2022}
-}
-```
+If you have any questions about the paper, please contact the first author Junchuan.
