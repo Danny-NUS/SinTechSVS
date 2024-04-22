@@ -38,14 +38,18 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td>Scooping</td>
-            <audio controls>
+            <td>
+                <audio controls>
                   <source src="2002000053_7_scooping.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
-            </audio>
-            <td>
-                <a href="2002000053_7_scooping.wav" download>Download Audio</a>
+                </audio>
             </td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>
+                <audio controls>
+                  <source src="2002000053_7_scooping.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
         <tr>
             <td>Bend</td>
