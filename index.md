@@ -1,7 +1,5 @@
 # SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System
 ## Junchuan Zhao, Low Qi Hong Chetwin, Ye Wang
-<!--``` You can use the [editor on GitHub](https://github.com/yamathcy/ISMIR2022J-POP/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files. ```-->
-
 
 <!-- ### Abstract of the paper
 ```
@@ -26,9 +24,10 @@ Experimental results demonstrate that SinTechSVS significantly improves the qual
 We provide the annotation of the dataset and its detail on the appendix website (this site). https://yamathcy.github.io/ISMIR2022J-POP/ 
 ``` -->
 
+### Overall Architecture
 
 <div style="text-align: center;">
-    <img src="overall-1.png" width="300px">
+    <img src="overall-1.png" width="1000px">
 </div>
 
 
