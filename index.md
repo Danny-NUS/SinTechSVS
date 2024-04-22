@@ -44,7 +44,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <table align="center" style="width:100%; border:#000 solid; border-width:1px 0">
     <thead>
         <tr>
-            <th colspan="2">#2: Honey / L'Arc～en～Ciel</th>
+            <th colspan="2">Pitch Singing Technique Samples</th>
         </tr>
     </thead>
     <tbody>
