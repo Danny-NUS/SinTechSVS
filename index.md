@@ -38,8 +38,8 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td>Scooping</td>
-            <td><img src="2002000053_7_scooping.wav" width="800px"></td>
-            <td><img src="bad_example_2_honey.png" width="800px"></td>
+            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td><img src="bad_example_2_honey.png"></td>
         </tr>
         <tr>
             <td>Scooping</td>
