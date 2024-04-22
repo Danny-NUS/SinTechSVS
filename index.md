@@ -41,6 +41,38 @@ We provide the annotation of the dataset and its detail on the appendix website 
     In this section, we provide samples of singing techniques included in our research.
 </div>
 
+<table align="center" style="width:100%; border:#000 solid; border-width:1px 0">
+    <thead>
+        <tr>
+            <th colspan="2">#2: Honey / L'Arc～en～Ciel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Video clip 0:14-0:20</td>
+            <td>Label (Upper: ground truth label, lower: detected labels)</td>
+        </tr>
+        <tr>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="2">#2: Honey / L'Arc～en～Ciel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Video clip 0:14-0:20</td>
+            <td>Label (Upper: ground truth label, lower: detected labels)</td>
+        </tr>
+        <tr>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
+        </tr>
+    </tbody>
+</table>
 
 
 #### Metadata
