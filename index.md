@@ -44,31 +44,35 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <table align="center" style="width:100%; border:#000 solid; border-width:1px 0">
     <thead>
         <tr>
-            <th colspan="2">Pitch Singing Technique Samples</th>
+            <th colspan="3">Singing Voice Samples of Pitch Singing Techniques</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Video clip 0:14-0:20</td>
-            <td>Label (Upper: ground truth label, lower: detected labels)</td>
+            <td>Scooping</td>
+            <td><img src="2002000053_7_scooping.wav" width="800px"></td>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
         </tr>
         <tr>
-            <td><img src="bad_example_2_honey.png" width="800px"></td>
+            <td>Scooping</td>
+            <td><img src="2002000053_7_scooping.wav" width="800px"></td>
             <td><img src="bad_example_2_honey.png" width="800px"></td>
         </tr>
     </tbody>
     <thead>
         <tr>
-            <th colspan="2">#2: Honey / L'Arc～en～Ciel</th>
+            <th colspan="3">Singing Voice Samples of Timbre Singing Techniques</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Video clip 0:14-0:20</td>
-            <td>Label (Upper: ground truth label, lower: detected labels)</td>
+            <td>Scooping</td>
+            <td><img src="2002000053_7_scooping.wav" width="800px"></td>
+            <td><img src="bad_example_2_honey.png" width="800px"></td>
         </tr>
         <tr>
-            <td><img src="bad_example_2_honey.png" width="800px"></td>
+            <td>Scooping</td>
+            <td><img src="2002000053_7_scooping.wav" width="800px"></td>
             <td><img src="bad_example_2_honey.png" width="800px"></td>
         </tr>
     </tbody>
