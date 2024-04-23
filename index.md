@@ -259,7 +259,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <ul>
 <li>Distribution of manually annotated portion of Opencpop dataset. (The singing techniques "whisper" and "hiccup" are removed due to the small amount of labels.) </li>
 <div style="text-align: center;">
-    <img src="dataset.png" width="350px">
+    <img src="dataset.png" width="450px">
 </div>
 <li>Distribution of duration of each singing technique.</li>
 <div style="text-align: center;">
