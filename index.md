@@ -477,7 +477,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 #### Singing Voice Synthesis with Singing Technique Recommendation
  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 <div style="text-align: justify">
-    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b>`{\rm ST}_{an}`</b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b><div class="formula"> `{\rm ST}_{an}`</div></b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
 </div>
 <br>
 <table>
@@ -489,7 +489,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Ground Truth</center></td>
-            <td><center>`{\rm ST}_{an}`</center></td>
+            <td><center><div class="formula"> `{\rm ST}_{an}`</div></center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
         <tr>
