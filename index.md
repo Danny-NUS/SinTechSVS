@@ -198,7 +198,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
                     <span style="text-decoration: underline; font-weight: bold; color: red;">有(wo) 你(you) 根(gen) 本(ben)</span> 不(bu) 想(xiang) 逃(tao)
                 </center>
                 <audio controls>
-                  <source src="falsetto.wav" type="audio/mpeg">
+                  <source src="falsetto_gt.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
@@ -268,7 +268,209 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </ul>
 
 ### SinTechSVS Samples
+<div style="text-align: justify">
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
+</div>
+<table>
+    <thead>
+        <tr>
+            <th colspan="4">SinTechSVS Synthesized Samples Conditioned on Pitch Singing Techniques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><center>Pitch Singing Techniques</center></td>
+            <td><center>Word-level Lyric Sequence</center></td>
+            <td><center>Regular/Straight</center></td>
+            <td><center>SinTechSVS</center></td>
+        </tr>
+        <tr>
+            <td>Scooping</td>
+            <td>
+                <center>
+                    冰 刀 <span style="text-decoration: underline; font-weight: bold; color: red;"> 划 </span> 的 圈
+                    <br>
+                    bing dao <span style="text-decoration: underline; font-weight: bold; color: red;">hua</span> de quan
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="scooping_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="scooping.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Bend</td>
+            <td>
+                <center>
+                    又 无 可 <span style="text-decoration: underline; font-weight: bold; color: red;">奈</span> 何
+                    <br>
+                    you wu ke <span style="text-decoration: underline; font-weight: bold; color: red;">nai</span> he
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="bending_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="bending.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Drop</td>
+            <td>
+                <center>
+                    小 火 车 &nbsp &nbsp 摆 <span style="text-decoration: underline; font-weight: bold; color: red;">动</span> 的 旋 律
+                    <br>
+                    xiao huo che &nbsp &nbsp bai <span style="text-decoration: underline; font-weight: bold; color: red;">dong</span> de xuan lv
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="drop_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="drop.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Melisma</td>
+            <td>
+                <center>
+                    你 在 世 俗 里 的 名 字 被 人 用 <span style="text-decoration: underline; font-weight: bold; color: red;">了</span>
+                    <br>
+                    ni zai shi su li de ming zi bei ren yong <span style="text-decoration: underline; font-weight: bold; color: red;">le</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="melisma_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="melisma.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="4">SinTechSVS Synthesized Samples Conditioned on Timbre Singing Techniques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Vocal Fry</td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">喔 喔</span>
+                    <br>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">wo wo</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="vocalfry_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="vocalfry.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Falsetto</td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">我 恨 你</span>
+                    <br>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">wo hen ni</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="falsetto_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="falsetto.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Breathy</td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">很 少 人 看 诗</span>
+                    <br>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">hen shao ren kan shi</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="breathy_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="breathy.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Belting</td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">你 好 吗</span>
+                    <br>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">ni hao ma</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="belting_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="belting.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 ### Contact
 If you have any questions about the paper, please contact the first author Junchuan.
+
