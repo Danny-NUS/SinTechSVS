@@ -595,6 +595,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
+#### Singing Voice Synthesis with Singing Technique Recommendation (Unseen)
+
+
 ### Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
