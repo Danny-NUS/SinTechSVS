@@ -267,7 +267,10 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </div>
 </ul>
 
+
 ### SinTechSVS Samples
+
+#### Singing Voice Synthesis with Singing Technique Control
 <div style="text-align: justify">
     In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
 </div>
@@ -280,7 +283,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Pitch Singing Techniques</center></td>
-            <td><center><div style="width: 170pt"> Word-level Lyric Sequence</center></td>
+            <td><center><div style="width: 170pt"> Word-level Lyric Sequence</div></center></td>
             <td><center>Regular/Straight</center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
@@ -470,6 +473,114 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
+#### Singing Voice Synthesis with Singing Technique Recommendation
+<div style="text-align: justify">
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. 
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="4">SinTechSVS Synthesized Samples Conditioned on Recommended Singing Techniques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><center>Ground Truth</center></td>
+            <td><center>SinTechSVS + ST$_an$</center></td>
+            <td><center>Regular/Straight</center></td>
+            <td><center>SinTechSVS</center></td>
+        </tr>
+        <tr>
+            <td>Scooping</td>
+            <td>
+                <center>
+                    冰 刀 <span style="text-decoration: underline; font-weight: bold; color: red;"> 划 </span> 的 圈
+                    <br>
+                    bing dao <span style="text-decoration: underline; font-weight: bold; color: red;">hua</span> de quan
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="scooping_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="scooping.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Bend</td>
+            <td>
+                <center>
+                    又 无 可 <span style="text-decoration: underline; font-weight: bold; color: red;">奈</span> 何
+                    <br>
+                    you wu ke <span style="text-decoration: underline; font-weight: bold; color: red;">nai</span> he
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="bending_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="bending.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Drop</td>
+            <td>
+                <center>
+                    小 火 车  摆 <span style="text-decoration: underline; font-weight: bold; color: red;">动</span> 的 旋 律
+                    <br>
+                    xiao huo che  bai <span style="text-decoration: underline; font-weight: bold; color: red;">dong</span> de xuan lv
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="drop_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="drop.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Melisma</td>
+            <td>
+                <center>
+                    你 在 世 俗 里 的 名 字 被 人 用 <span style="text-decoration: underline; font-weight: bold; color: red;">了</span>
+                    <br>
+                    ni zai shi su li de ming zi bei ren yong <span style="text-decoration: underline; font-weight: bold; color: red;">le</span>
+                </center>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="melisma_regular.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="melisma.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### Contact
 If you have any questions about the paper, please contact the first author Junchuan.
