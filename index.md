@@ -597,6 +597,60 @@ We provide the annotation of the dataset and its detail on the appendix website 
 
 #### Singing Voice Synthesis with Singing Technique Recommendation (Unseen)
 
+This section showcases singing technique recommendations through unseen music score samples and their corresponding synthesized audio demonstrations. For pitch singing techniques, the abbreviations are: (1) straight - <b>STR</b>; (2) scooping - <b>SCO</b>; (3) bend - <b>BEND</b>; (4) drop - <b>DROP</b>; (5) melisma - <b>MEL</b>. For timbre singing techniques, the abbreviations are: (1) regular - <b>REG</b>; (2) vocal fry - <b>FRY</b>; (3) falsetto - <b>FAL</b>; (4) breathy: <b>BRE</b>; (5) belting: <b>BEL</b>.
+
+<br>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Unseen Sample 1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <center><div style="width: 100pt">Input Sequence</div></center>
+            </td>
+            <td>
+                <div style="width: 500pt"> <center>Lyrics: 但(dan) 我(wo) 早(zao) 已(yi) 学(xue) 会(hui) 一(yi) 个(ge) 人(ren) 想(xiang) 你(ni) </center>
+                <center>Pitch: A3 F#4/Gb4 E4 D4 F#4/Gb4 B4 C#5/Db5 B4 A4 F#4/Gb4 E4 D4 F#4/Gb4 E4 D4</center>
+                <center>Slur: 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
+                </center>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Pitch Singing Techniques</center>
+            </td>
+            <td>
+                <center>STR SCO MEL MEL REG REG SCO REG REG DROP REG REG MEL MEL MEL</center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Timber Singing Techniques</center>
+            </td>
+            <td>
+                <center>REG BEL BEL BEL BEL FAL FAL FAL FAL BRE BRE REG BRE BRE BRE</center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Synthesized Audio</center>
+            </td>
+            <td>
+                <center>
+                <audio controls>
+                  <source src="unseen1.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+                </center>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 ### Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
