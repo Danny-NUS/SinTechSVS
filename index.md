@@ -26,7 +26,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 
 ### Singing Techniques
 <div style="text-align: justify">
-    In this section, we provide samples of singing techniques included in our research.
+    In this section, we provide samples of singing techniques included in our research. In sentence-level samples, bolded words are sung in the specific technique.
 </div>
 
 <table>
@@ -68,35 +68,180 @@ We provide the annotation of the dataset and its detail on the appendix website 
         </tr>
         <tr>
             <td>Bend</td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>
+                <audio controls>
+                  <source src="2002000066_0_bend.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2002000066_11_bend.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    没(mei) 限(xian) <span style="text-decoration: underline; font-weight: bold; color: red;">期(qi)</span>
+                </center>
+                <audio controls>
+                  <source src="2042001596_qi_bend.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
         <tr>
             <td>Drop</td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>
+                <audio controls>
+                  <source src="2002000071_3_drop.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2007000218_6_drop.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    再(zai) <span style="text-decoration: underline; font-weight: bold; color: red;">给(gei)</span> 我(wo) 两(liang) 分(fen) 钟(zhong)
+                </center>
+                <audio controls>
+                  <source src="2067002490_gei_drop.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
         <tr>
             <td>Melisma</td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>
+                <audio controls>
+                  <source src="2057002127_3_melisma.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2010000384_4_melisma.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">双(shuang)</span> 眼(yan)
+                </center>
+                <audio controls>
+                  <source src="2017000662_shuang_melisma.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
     </tbody>
     <thead>
         <tr>
-            <th colspan="3">Singing Voice Samples of Timbre Singing Techniques</th>
+            <th colspan="4">Singing Voice Samples of Timbre Singing Techniques</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Scooping</td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>Vocal Fry</td>
+            <td>
+                <audio controls>
+                  <source src="2001000009_0_vf.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2004000113_2_vf.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">我(wo)</span> 们(men) 都(dou) 需(xu) 要(yao) 勇(yong) 气(qi)
+                </center>
+                <audio controls>
+                  <source src="2028001094_wo_vf.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
         <tr>
-            <td>Scooping</td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
-            <td><audio src="2002000053_7_scooping.wav"></td>
+            <td>Falsetto</td>
+            <td>
+                <audio controls>
+                  <source src="2047001800_5_fal.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2047001802_6_fal.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    没(mei) 
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">有(wo) 你(you) 根(gen) 本(ben)</span> 不(bu) 想(xiang) 逃(tao)
+                </center>
+                <audio controls>
+                  <source src="falsetto.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Breathy</td>
+            <td>
+                <audio controls>
+                  <source src="2050001901_5_breathy.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2053001995_0_breathy.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    我(wo) 
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">不(bu) 会(hui) 发(fa) 现(xian) 我(wo) 难(nan) 受(shou)</span>
+                </center>
+                <audio controls>
+                  <source src="2094003485_all_except_first_breathy.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>Belting</td>
+            <td>
+                <audio controls>
+                  <source src="2054002011_3_belting.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="2057002140_13_belting.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <center>
+                    <span style="text-decoration: underline; font-weight: bold; color: red;">一(yi) 辈(bei) 子(zi) 暖(nuan) 暖(nuan) 的(de) 好(hao)</span>
+                </center>
+                <audio controls>
+                  <source src="2093003482_all_belting.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
         </tr>
     </tbody>
 </table>
