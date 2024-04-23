@@ -597,13 +597,15 @@ We provide the annotation of the dataset and its detail on the appendix website 
 
 #### Singing Voice Synthesis with Singing Technique Recommendation (Unseen)
 
-This section showcases singing technique recommendations through unseen music score samples and their corresponding synthesized audio demonstrations. For pitch singing techniques, the abbreviations are: (1) straight - <b>STR</b>; (2) scooping - <b>SCO</b>; (3) bend - <b>BEND</b>; (4) drop - <b>DROP</b>; (5) melisma - <b>MEL</b>. For timbre singing techniques, the abbreviations are: (1) regular - <b>REG</b>; (2) vocal fry - <b>FRY</b>; (3) falsetto - <b>FAL</b>; (4) breathy: <b>BRE</b>; (5) belting: <b>BEL</b>.
+<div style="text-align: justify">
+This section showcases singing technique recommendations through unseen music score samples and their corresponding synthesized audio demonstrations. For pitch singing techniques, the abbreviations are: (1) straight - <b>STR</b>; (2) scooping - <b>SCO</b>; (3) bend - <b>BEND</b>; (4) drop - <b>DROP</b>; (5) melisma - <b>MEL</b>. For timbre singing techniques, the abbreviations are: (1) regular - <b>REG</b>; (2) vocal fry - <b>FRY</b>; (3) falsetto - <b>FAL</b>; (4) breathy: <b>BRE</b>; (5) belting: <b>BEL</b>. The word-level pitch, lyric, slur, and singing technique will be separated by |.
+</div>
 
 <br>
 <table>
     <thead>
         <tr>
-            <th colspan="3">Unseen Sample 1</th>
+            <th colspan="2">Unseen Sample 1</th>
         </tr>
     </thead>
     <tbody>
@@ -612,9 +614,9 @@ This section showcases singing technique recommendations through unseen music sc
                 <center><div style="width: 100pt">Input Sequence</div></center>
             </td>
             <td>
-                <div style="width: 500pt"> <center>Lyrics: 但(dan) 我(wo) 早(zao) 已(yi) 学(xue) 会(hui) 一(yi) 个(ge) 人(ren) 想(xiang) 你(ni) </center>
-                <center>Pitch: A3 F#4/Gb4 E4 D4 F#4/Gb4 B4 C#5/Db5 B4 A4 F#4/Gb4 E4 D4 F#4/Gb4 E4 D4</center>
-                <center>Slur: 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
+                <div style="width: 630pt"> <center>Lyrics: 但(dan) | 我(wo) | 早(zao) | 已(yi) | 学(xue) | 会(hui) | 一(yi) | 个(ge) | 人(ren) | 想(xiang) | 你(ni) </center>
+                <center>Pitch: A3 | F#4/Gb4 E4 D4 | F#4/Gb4 | B4 | C#5/Db5 | B4 | A4 | F#4/Gb4 | E4 | D4 | F#4/Gb4 E4 D4</center>
+                <center>Slur: 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1
                 </center>
                 </div>
             </td>
@@ -624,7 +626,7 @@ This section showcases singing technique recommendations through unseen music sc
                 <center>Output Pitch Singing Techniques</center>
             </td>
             <td>
-                <center>STR SCO MEL MEL REG REG SCO REG REG DROP REG REG MEL MEL MEL</center>
+                <center>STR | MEL | REG | REG | SCO | REG | REG | DROP | REG | REG | MEL </center>
             </td>
         </tr>
         <tr>
@@ -632,7 +634,7 @@ This section showcases singing technique recommendations through unseen music sc
                 <center>Output Timber Singing Techniques</center>
             </td>
             <td>
-                <center>REG BEL BEL BEL BEL FAL FAL FAL FAL BRE BRE REG BRE BRE BRE</center>
+                <center>REG | BEL | BEL | FAL | FAL | FAL | FAL | BRE | BRE | REG | BRE</center>
             </td>
         </tr>
         <tr>
@@ -651,6 +653,115 @@ This section showcases singing technique recommendations through unseen music sc
     </tbody>
 </table>
 
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Unseen Sample 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <center><div style="width: 100pt">Input Sequence</div></center>
+            </td>
+            <td>
+                <div style="width: 630pt"> <center>Lyrics: 看(kan) | 着(zhe) | 我(wo) | 的(de) | 脚(jiao) | 印(yin) | 一(yi) | 个(ge) | 人(ren) | 一(yi) | 步(bu) | 步(bu) | 好(hao) | 寂(ji) | 寞(mo)
+                </center>
+                <center>Pitch: F4 | G4 | E4 | D4 | C4 | D4 C4 A4 | E4 | F4 | C5 | E4 | F4 | C5 | E4 | F4 | F4
+                </center>
+                <center>Slur: 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1
+                </center>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Pitch Singing Techniques</center>
+            </td>
+            <td>
+                <center>STR | STR | SCO | STR | REG | MEL | STR | STR | SCO | STR | STR | SCO | STR | STR | SCO
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Timber Singing Techniques</center>
+            </td>
+            <td>
+                <center>BEL | BEL | BEL | BEL | BEL | REG | REG | REG | FAL | REG | REG | FAL | REG | REG | BEL
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Synthesized Audio</center>
+            </td>
+            <td>
+                <center>
+                <audio controls>
+                  <source src="unseen2.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+                </center>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Unseen Sample 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <center><div style="width: 100pt">Input Sequence</div></center>
+            </td>
+            <td>
+                <div style="width: 630pt"> <center>Lyrics: 有(you) | 什(shen) | 么(me) | 方(fang) | 法(fa) | 让(rang) | 自(zi) | 己(ji) | 真(zhen) | 的(de) | 忘(wang) | 记 (ji) | ha | ha
+                 </center>
+                <center>Pitch: G4 | A4 | A#4/Bb4 | A4 F4 | C4 | A#4/Bb4 | A4 | F4 | A#4/Bb4 | A4 | A#4/Bb4 | C5 | A#4/Bb4 A4 | A4 G4 F4
+                </center>
+                <center>Slur: 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1
+                </center>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Pitch Singing Techniques</center>
+            </td>
+            <td>
+                <center>STR | STR | SCO | BEND | BEND | STR | STR | STR | BEND | STR | STR | SCO | DROP | MEL
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Output Timber Singing Techniques</center>
+            </td>
+            <td>
+                <center>REG | REG | REG | BRE | BRE | BEL | BEL | BEL | BRE | BRE | BRE | FAL | BRE | BRE
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>Synthesized Audio</center>
+            </td>
+            <td>
+                <center>
+                <audio controls>
+                  <source src="unseen3.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+                </center>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ### Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
