@@ -475,10 +475,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </table>
 
 #### Singing Voice Synthesis with Singing Technique Recommendation
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 <div style="text-align: justify">
-    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b><span class="math-formula" style="display: inline;">ST$$_{an}$$</span></b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b>`{\rm ST}_{an}`</b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
 </div>
 <br>
 <table>
@@ -490,7 +489,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Ground Truth</center></td>
-            <td><center><span class="math-formula" style="display: inline;">ST$$_{an}$$</span></center></td>
+            <td><center>`{\rm ST}_{an}`</center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
         <tr>
