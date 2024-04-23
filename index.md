@@ -465,8 +465,8 @@ We provide the annotation of the dataset and its detail on the appendix website 
                 </audio>
             </td>
             <td>
-                <audio controls>
-                  <source src="belting.wav" type="audio/mpeg", style="display: inline;">
+               <audio controls>
+                  <source src="belting.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
@@ -483,7 +483,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <table>
     <thead>
         <tr>
-            <th colspan="4">SinTechSVS Synthesized Samples Conditioned on Recommended Singing Techniques</th>
+            <th colspan="3">SinTechSVS Synthesized Samples Conditioned on Recommended Singing Techniques</th>
         </tr>
     </thead>
     <tbody>
