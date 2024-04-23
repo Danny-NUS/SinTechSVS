@@ -37,7 +37,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <div style="text-align: justify">
     In this section, we provide samples of singing techniques included in our research. In sentence-level samples, bolded words are sung in the specific technique.
 </div>
-
+<br>
 <table>
     <thead>
         <tr>
@@ -259,7 +259,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <ul>
 <li>Distribution of manually annotated portion of Opencpop dataset. (The singing techniques "whisper" and "hiccup" are removed due to the small amount of labels.) </li>
 <div style="text-align: center;">
-    <img src="dataset.png" width="600px">
+    <img src="dataset.png" width="350px">
 </div>
 <li>Distribution of duration of each singing technique.</li>
 <div style="text-align: center;">
@@ -274,6 +274,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <div style="text-align: justify">
     In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
 </div>
+<br>
 <table>
     <thead>
         <tr>
@@ -474,10 +475,12 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </table>
 
 #### Singing Voice Synthesis with Singing Technique Recommendation
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <div style="text-align: justify">
-    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. 
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b><span class="math-formula">$$ST_{an}$$</span></b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
 </div>
-
+<br>
 <table>
     <thead>
         <tr>
@@ -487,8 +490,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Ground Truth</center></td>
-            <td><center>SinTechSVS + ST$_an$</center></td>
-            <td><center>Regular/Straight</center></td>
+            <td><center><span class="math-formula">$$ST_{an}$$</span></center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
         <tr>
@@ -583,5 +585,5 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </table>
 
 ### Contact
-If you have any questions about the paper, please contact the first author Junchuan.
+If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
