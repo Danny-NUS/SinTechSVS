@@ -256,21 +256,16 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </table>
 
 ### Annotated Data Statistics
+<ul>
+<li>Distribution of manually annotated portion of Opencpop dataset. (The singing techniques "whisper" and "hiccup" are removed due to the small amount of labels.) </li>
 <div style="text-align: center;">
-    <img src="dataset.png" width="500px">
+    <img src="dataset.png" width="600px">
 </div>
-
-<div style="text-align: justify">
-    Distribution of manually annotated portion of Opencpop dataset. The singing techniques ”whisper” and ”hiccup” are removed due to the small amount of labels.
-</div>
-
+<li>Distribution of duration of each singing technique.</li>
 <div style="text-align: center;">
     <img src="violin.png" width="800px">
 </div>
-<div style="text-align: justify">
-    Distribution of duration of each singing technique.
-</div>
-
+</ul>
 
 ### SinTechSVS Samples
 
