@@ -280,7 +280,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Pitch Singing Techniques</center></td>
-            <td style="width:50%"><center>Word-level Lyric Sequence</center></td>
+            <td><center><div style="width: 170pt"> Word-level Lyric Sequence</center></td>
             <td><center>Regular/Straight</center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
