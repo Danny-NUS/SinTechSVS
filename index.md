@@ -269,7 +269,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 
 ### SinTechSVS Samples
 <div style="text-align: justify">
-    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
 </div>
 <table>
     <thead>
@@ -278,6 +278,12 @@ We provide the annotation of the dataset and its detail on the appendix website 
         </tr>
     </thead>
     <tbody>
+        <colgroup>
+            <col style="width: 100px;">
+            <col style="width: 200px;">
+            <col style="width: 200px;">
+            <col style="width: 200px;">
+        </colgroup>
         <tr>
             <td><center>Pitch Singing Techniques</center></td>
             <td><center>Word-level Lyric Sequence</center></td>
@@ -332,9 +338,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
             <td>Drop</td>
             <td>
                 <center>
-                    小 火 车 &nbsp &nbsp 摆 <span style="text-decoration: underline; font-weight: bold; color: red;">动</span> 的 旋 律
+                    小 火 车  摆 <span style="text-decoration: underline; font-weight: bold; color: red;">动</span> 的 旋 律
                     <br>
-                    xiao huo che &nbsp &nbsp bai <span style="text-decoration: underline; font-weight: bold; color: red;">dong</span> de xuan lv
+                    xiao huo che  bai <span style="text-decoration: underline; font-weight: bold; color: red;">dong</span> de xuan lv
                 </center>
             </td>
             <td>
