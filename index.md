@@ -478,7 +478,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <div style="text-align: justify">
-    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b><span class="math-formula">$$ST_{an}$$</span></b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
+    In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b><span class="math-formula">ST$_{an}$</span></b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
 </div>
 <br>
 <table>
@@ -490,93 +490,105 @@ We provide the annotation of the dataset and its detail on the appendix website 
     <tbody>
         <tr>
             <td><center>Ground Truth</center></td>
-            <td><center><span class="math-formula">$$ST_{an}$$</span></center></td>
+            <td><center><span class="math-formula">ST$_{an}$</span></center></td>
             <td><center>SinTechSVS</center></td>
         </tr>
         <tr>
-            <td>Scooping</td>
-            <td>
-                <center>
-                    冰 刀 <span style="text-decoration: underline; font-weight: bold; color: red;"> 划 </span> 的 圈
-                    <br>
-                    bing dao <span style="text-decoration: underline; font-weight: bold; color: red;">hua</span> de quan
-                </center>
-            </td>
             <td>
                 <audio controls>
-                  <source src="scooping_regular.wav" type="audio/mpeg">
+                  <source src="GT/2099003684.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
             <td>
                 <audio controls>
-                  <source src="scooping.wav" type="audio/mpeg">
-                  Your browser does not support the audio tag.
-                </audio>
-            </td>
-        </tr>
-        <tr>
-            <td>Bend</td>
-            <td>
-                <center>
-                    又 无 可 <span style="text-decoration: underline; font-weight: bold; color: red;">奈</span> 何
-                    <br>
-                    you wu ke <span style="text-decoration: underline; font-weight: bold; color: red;">nai</span> he
-                </center>
-            </td>
-            <td>
-                <audio controls>
-                  <source src="bending_regular.wav" type="audio/mpeg">
+                  <source src="STan/2099003684.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
             <td>
                 <audio controls>
-                  <source src="bending.wav" type="audio/mpeg">
+                  <source src="SinTechSVS_/2099003684.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
         </tr>
         <tr>
-            <td>Drop</td>
-            <td>
-                <center>
-                    小 火 车  摆 <span style="text-decoration: underline; font-weight: bold; color: red;">动</span> 的 旋 律
-                    <br>
-                    xiao huo che  bai <span style="text-decoration: underline; font-weight: bold; color: red;">dong</span> de xuan lv
-                </center>
-            </td>
             <td>
                 <audio controls>
-                  <source src="drop_regular.wav" type="audio/mpeg">
+                  <source src="GT/2086003182.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
             <td>
                 <audio controls>
-                  <source src="drop.wav" type="audio/mpeg">
+                  <source src="STan/2086003182.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="SinTechSVS_/2086003182.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
         </tr>
         <tr>
-            <td>Melisma</td>
-            <td>
-                <center>
-                    你 在 世 俗 里 的 名 字 被 人 用 <span style="text-decoration: underline; font-weight: bold; color: red;">了</span>
-                    <br>
-                    ni zai shi su li de ming zi bei ren yong <span style="text-decoration: underline; font-weight: bold; color: red;">le</span>
-                </center>
-            </td>
             <td>
                 <audio controls>
-                  <source src="melisma_regular.wav" type="audio/mpeg">
+                  <source src="GT/2081002987.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
             <td>
                 <audio controls>
-                  <source src="melisma.wav" type="audio/mpeg">
+                  <source src="STan/2081002987.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="SinTechSVS_/2081002987.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                  <source src="GT/2072002678.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="STan/2072002678.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="SinTechSVS_/2072002678.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                  <source src="GT/2046001741.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="STan/2046001741.wav" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                  <source src="SinTechSVS_/2046001741.wav" type="audio/mpeg">
                   Your browser does not support the audio tag.
                 </audio>
             </td>
