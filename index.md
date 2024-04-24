@@ -253,6 +253,23 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
+## Data Acquirement
+<div style="text-align: justify">
+If you want the manual singing technique annotation file for opencpop dataset, access <a href="https://docs.google.com/spreadsheets/d/1p1BRTCmCrcLdBm28w3OfeZ6mK3E752rD/edit?usp=drive_link&ouid=109505594792565231495&rtpof=true&sd=true">here</a> and request a permission. The annotation is research purpose only.
+</div>
+<div style="text-align: justify">
+The request should include the following. Otherwise it will be rejected.
+<ul>
+    <li>Name</li>
+    <li>Affiliation</li>
+    <li>Email Address</li>
+    <li>Agree to the License</li>
+</ul>
+</div>
+<div style="text-align: justify">
+For Opencpop dataset: Please trictly follow the instructions of <a href="https://wenet.org.cn/opencpop/">Opencpop</a>. We have no right to give you the access to Opencpop.
+</div>
+
 ## Annotated Data Statistics
 <ul>
 <li>Distribution of manually annotated portion of Opencpop dataset. (The singing techniques "whisper" and "hiccup" are removed due to the small amount of labels.) </li>
@@ -764,3 +781,20 @@ This section showcases singing technique recommendations through unseen music sc
 ## Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
+## License
+<ul>
+<li><div style="text-align: justify">
+The singing technique annotation for Opencpop is available to download for non-commercial purposes under the <a href="https://wenet.org.cn/opencpop/liscense/">Opencpop license</a>. 
+</div>
+</li>
+<li>
+<div style="text-align: justify">
+This annotation may not be sold, leased, published or distributed to any third party without written permission from the administrator.
+</div>
+</li>
+<li>
+<div style="text-align: justify">
+The National University of Singapore is not responsible for errors in the annotation's content or any damages resulting from its use. The administrator may update these conditions of use at any time.
+</div>
+</li>
+</ul>
