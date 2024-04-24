@@ -263,7 +263,7 @@ The request should include the following. Otherwise it will be rejected.
     <li>Name</li>
     <li>Affiliation</li>
     <li>Email Address</li>
-    <li>Agree to the [License](#license)</li>
+    <li>Agree to the <a href="#license">License</a></li>
 </ul>
 </div>
 <div style="text-align: justify">
