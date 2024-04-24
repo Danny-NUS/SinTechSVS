@@ -263,7 +263,7 @@ The request should include the following. Otherwise it will be rejected.
     <li>Name</li>
     <li>Affiliation</li>
     <li>Email Address</li>
-    <li>Agree to the [license](#license)</li>
+    <li>Agree to the [License](#license)</li>
 </ul>
 </div>
 <div style="text-align: justify">
@@ -781,6 +781,7 @@ This section showcases singing technique recommendations through unseen music sc
 ## Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
+<a id="license"></a>
 ## License
 <ul>
 <li><div style="text-align: justify">
