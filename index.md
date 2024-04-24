@@ -1,7 +1,4 @@
-# SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System
-## Junchuan Zhao, Low Qi Hong Chetwin, Ye Wang
-
-### Abstract of the paper
+## Abstract of the paper
 
 <div style="text-align: justify">
     The precise control of singing techniques is of utmost importance in achieving emotionally expressive vocal performances. To bridge the gap between current Singing Voice Synthesis (SVS) systems and human singers, our paper focuses on developing an SVS system that allows for control over singing techniques. 
@@ -33,7 +30,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     The training process of SinTechSVS consists of three steps, with each step laying the foundation for the next. Modules depicted with full shadows remain unfixed during the training step, while those with half shadows are first fixed and then unfixed during training. (Top-left): Training of STA; (Bottom-left): Training of STA; (Bottom-right): Inference of SinTechSVS.
 </div>
 
-### Singing Techniques
+## Singing Techniques
 <div style="text-align: justify">
     In this section, we provide samples of singing techniques included in our research. In sentence-level samples, bolded words are sung in the specific technique.
 </div>
@@ -268,9 +265,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
 </ul>
 
 
-### SinTechSVS Samples
+## SinTechSVS Samples
 
-#### Singing Voice Synthesis with Singing Technique Control
+### Singing Voice Synthesis with Singing Technique Control
 <div style="text-align: justify">
     In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques. In <b>Word-level Lyric Sequence</b>, bolded words are sung in the specific technique. <b>Regular/Straight</b> denotes synthesized audio with no singing techniques, serving as a reference for comparison.
 </div>
@@ -474,7 +471,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
-#### Singing Voice Synthesis with Singing Technique Recommendation
+### Singing Voice Synthesis with Singing Technique Recommendation
  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 <div style="text-align: justify">
     In this section, we provide synthesized samples of SinTechSVS conditioned on singing techniques recommended from the music score. <b>STan</b> represents SinTechSVS with annotated singing technique labels. <b>SinTechSVS</b> use the STR to predict the singing techniques for input.
@@ -595,7 +592,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
-#### Singing Voice Synthesis with Singing Technique Recommendation (Unseen)
+### Singing Voice Synthesis with Singing Technique Recommendation (Unseen)
 
 <div style="text-align: justify">
 This section showcases singing technique recommendations through unseen music score samples and their corresponding synthesized audio demonstrations. For pitch singing techniques, the abbreviations are: (1) straight - <b>STR</b>; (2) scooping - <b>SCO</b>; (3) bend - <b>BEND</b>; (4) drop - <b>DROP</b>; (5) melisma - <b>MEL</b>. For timbre singing techniques, the abbreviations are: (1) regular - <b>REG</b>; (2) vocal fry - <b>FRY</b>; (3) falsetto - <b>FAL</b>; (4) breathy: <b>BRE</b>; (5) belting: <b>BEL</b>. The word-level pitch, lyric, slur, and singing technique will be separated by |.
@@ -763,6 +760,6 @@ This section showcases singing technique recommendations through unseen music sc
     </tbody>
 </table>
 
-### Contact
+## Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
