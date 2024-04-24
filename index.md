@@ -31,9 +31,9 @@ We provide the annotation of the dataset and its detail on the appendix website 
     The training process of SinTechSVS consists of three steps, with each step laying the foundation for the next. Modules depicted with full shadows remain unfixed during the training step, while those with half shadows are first fixed and then unfixed during training. (Top-left): Training of STA; (Bottom-left): Training of STA; (Bottom-right): Inference of SinTechSVS.
 </div>
 
-## Singing Techniques
+## Singing Technique Annotations
 <div style="text-align: justify">
-    In this section, we provide samples of singing techniques included in our research. In sentence-level samples, bolded words are sung in the specific technique.
+    In this section, we provide samples of singing techniques that we annotated on opencpop dataset. In sentence-level samples, bolded words are sung in the specific technique.
 </div>
 <br>
 <table>
@@ -253,7 +253,7 @@ We provide the annotation of the dataset and its detail on the appendix website 
     </tbody>
 </table>
 
-### Annotated Data Statistics
+## Annotated Data Statistics
 <ul>
 <li>Distribution of manually annotated portion of Opencpop dataset. (The singing techniques "whisper" and "hiccup" are removed due to the small amount of labels.) </li>
 <div style="text-align: center;">
