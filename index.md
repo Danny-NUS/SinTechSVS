@@ -778,6 +778,21 @@ This section showcases singing technique recommendations through unseen music sc
     </tbody>
 </table>
 
+## Citation 
+Cite the IEEE/ACM Transactions on Audio, Speech, and Language Processing journal paper.
+```
+@ARTICLE{10509739,
+  author={Zhao, Junchuan and Chetwin, Low Qi Hong and Wang, Ye},
+  journal={IEEE/ACM Transactions on Audio, Speech, and Language Processing}, 
+  title={SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-13},
+  keywords={Hidden Markov models;Annotations;Timbre;Task analysis;Deep learning;Synthesizers;Controllability;Singing voice synthesis;singing voice synthesis conditioned on singing techniques;singing technique classification;singing technique recommendation;metric;deep learning},
+  doi={10.1109/TASLP.2024.3394769}}
+```
+
 ## Contact
 If you have any questions about the paper, please contact the first author Junchuan by junchuan@comp.nus.edu.sg.
 
@@ -799,3 +814,5 @@ The National University of Singapore is not responsible for errors in the annota
 </div>
 </li>
 </ul>
+
+
