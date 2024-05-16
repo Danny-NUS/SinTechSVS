@@ -790,7 +790,8 @@ Cite the IEEE/ACM Transactions on Audio, Speech, and Language Processing journal
   number={},
   pages={1-13},
   keywords={Hidden Markov models;Annotations;Timbre;Task analysis;Deep learning;Synthesizers;Controllability;Singing voice synthesis;singing voice synthesis conditioned on singing techniques;singing technique classification;singing technique recommendation;metric;deep learning},
-  doi={10.1109/TASLP.2024.3394769}}
+  doi={10.1109/TASLP.2024.3394769}
+}
 ```
 
 ## Contact
