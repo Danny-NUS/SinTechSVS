@@ -1,1459 +1,2157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SinTechSVS — A Singing Technique Controllable Singing Voice Synthesis System</title>
-<meta name="description" content="Supplementary materials for SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System (IEEE/ACM TASLP, 2024).">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;0,9..144,650;1,9..144,450&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinTechSVS — A Singing Technique Controllable Singing Voice Synthesis System</title>
+  <meta name="description"
+    content="Supplementary materials for SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System (IEEE/ACM TASLP, 2024).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;0,9..144,650;1,9..144,450&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1d1f;
+      --ink-soft: #6b6d72;
+      --ink-faint: #9a9b9f;
+      --paper: #f7f5f0;
+      --paper-raised: #ffffff;
+      --paper-warm: #fdf3e7;
+      --line: #e1ddd2;
+      --line-strong: #cfc9ba;
+      --accent: #a8392f;
+      --accent-dim: #832d25;
+      --accent-warm: #d97a4d;
+      --pitch: #2f6e62;
+      --timbre: #946134;
+      --radius: 2px;
+      --maxw: 1080px;
+      --gut: 1px solid var(--line);
+      --font-serif-body: 'Source Serif 4', 'Fraunces', Georgia, serif;
+    }
 
-:root{
-  --ink: #1c1d1f;
-  --ink-soft: #6b6d72;
-  --ink-faint: #9a9b9f;
-  --paper: #f7f5f0;
-  --paper-raised: #ffffff;
-  --paper-warm: #fdf3e7;
-  --line: #e1ddd2;
-  --line-strong: #cfc9ba;
-  --accent: #a8392f;
-  --accent-dim: #832d25;
-  --accent-warm: #d97a4d;
-  --pitch: #2f6e62;
-  --timbre: #946134;
-  --radius: 2px;
-  --maxw: 1080px;
-  --gut: 1px solid var(--line);
-  --font-serif-body: 'Source Serif 4', 'Fraunces', Georgia, serif;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-}
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:'Inter', sans-serif;
-  font-size:16px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
+      * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
 
-a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent;}
-a:hover{border-bottom-color:var(--accent);}
-a:focus-visible, button:focus-visible, .tab-btn:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:2px;
-}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.wrap{max-width:var(--maxw); margin:0 auto; padding:0 44px;}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
 
-h1,h2,h3{
-  font-family:'Fraunces', serif;
-  font-weight:520;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-  margin:0;
-}
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
 
-.eyebrow{
-  font-family:'JetBrains Mono', monospace;
-  font-size:11.5px;
-  letter-spacing:0.13em;
-  text-transform:uppercase;
-  color:var(--ink-faint);
-  font-weight:500;
-}
+    a:focus-visible,
+    button:focus-visible,
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
 
-/* ---------- header / hero ---------- */
-header.hero{
-  position:relative;
-  padding:84px 0 64px;
-  border-bottom:var(--gut);
-  background:linear-gradient(155deg, #fffdf9 0%, var(--paper-warm) 52%, #fbe9d8 100%);
-  overflow:hidden;
-}
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 44px;
+    }
 
-.hero .eyebrow{display:block; margin-bottom:20px;}
+    h1,
+    h2,
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 520;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 0;
+    }
 
-h1.title{
-  font-size:clamp(2.2rem, 3.8vw, 3.25rem);
-  line-height:1.16;
-  max-width:860px;
-  font-weight:500;
-}
-h1.title em{
-  font-style:italic;
-  color:var(--accent);
-  font-weight:450;
-}
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
 
-.authors{
-  margin-top:26px;
-  font-size:15.5px;
-  color:var(--ink-soft);
-}
-.authors .name{color:var(--ink); font-weight:600;}
-.venue{
-  margin-top:5px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:12.5px;
-  color:var(--ink-faint);
-}
+    /* ---------- header / hero ---------- */
+    header.hero {
+      position: relative;
+      padding: 84px 0 64px;
+      border-bottom: var(--gut);
+      background: linear-gradient(155deg, #fffdf9 0%, var(--paper-warm) 52%, #fbe9d8 100%);
+      overflow: hidden;
+    }
 
-.hero-actions{
-  margin-top:30px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 18px;
-  border-radius:var(--radius);
-  font-family:'Inter',sans-serif;
-  font-weight:600;
-  font-size:14px;
-  border:1px solid var(--ink);
-  background:var(--ink);
-  color:var(--paper);
-  cursor:pointer;
-  transition:opacity 0.15s ease;
-}
-.btn:hover{opacity:0.82;}
-.btn.secondary{
-  background:transparent;
-  color:var(--ink);
-  border:1px solid var(--line-strong);
-}
-.btn.secondary:hover{background:var(--paper-raised); opacity:1; border-color:var(--ink-faint);}
+    .hero .eyebrow {
+      display: block;
+      margin-bottom: 20px;
+    }
 
-/* simple staff motif, sits quietly under the hero, never touches the type */
-.hero-staff{
-  margin-top:48px;
-  height:1px;
-  background:var(--line);
-  position:relative;
-}
-.hero-staff::after{
-  content:"";
-  position:absolute;
-  left:0; top:-1px;
-  width:64px; height:3px;
-  background:var(--accent);
-}
+    h1.title {
+      font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+      line-height: 1.16;
+      max-width: 860px;
+      font-weight: 500;
+    }
 
-/* ---------- radial technique diagram (hero visual) ---------- */
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-}
-@media (min-width:980px){
-  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(430px,0.82fr); align-items:center; gap:56px;}
-}
-.radial-wrap{
-  position:relative;
-  width:100%;
-  max-width:460px;
-  margin:36px auto 0;
-}
-@media (min-width:980px){
-  .radial-wrap{margin:0; max-width:540px;}
-}
-.radial-wrap svg{width:100%; height:auto; display:block; overflow:visible;}
+    h1.title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 450;
+    }
 
-.radial-ring{
-  fill:none;
-  stroke:var(--line);
-  stroke-width:1;
-}
-.radial-ring.pulse{
-  stroke:var(--line-strong);
-  animation:ringPulse 4.5s ease-in-out infinite;
-  transform-origin:300px 260px;
-}
-.radial-ring.compass{
-  stroke:var(--accent-warm);
-  stroke-width:1.1;
-  stroke-dasharray:1.5 11;
-  stroke-linecap:round;
-  opacity:0.55;
-  animation:compassSpin 50s linear infinite;
-  transform-origin:300px 260px;
-}
-@keyframes ringPulse{
-  0%, 100%{opacity:0.35; transform:scale(1);}
-  50%{opacity:0.8; transform:scale(1.015);}
-}
-@keyframes compassSpin{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
-@media (prefers-reduced-motion: reduce){
-  .radial-ring.pulse, .radial-ring.compass{animation:none;}
-}
+    .authors {
+      margin-top: 26px;
+      font-size: 15.5px;
+      color: var(--ink-soft);
+    }
 
-.radial-spoke{
-  stroke:var(--line);
-  stroke-width:1;
-  opacity:0.6;
-}
+    .authors .name {
+      color: var(--ink);
+      font-weight: 600;
+    }
 
-.radial-core{
-  cursor:default;
-  animation:coreFloat 6s ease-in-out infinite;
-  transform-origin:300px 260px;
-}
-.radial-core circle{
-  fill:url(#coreGrad);
-  stroke:var(--ink);
-  stroke-width:1.25;
-  filter:drop-shadow(0 4px 10px rgba(28,29,31,0.10));
-}
-.radial-core text{
-  font-family:'Fraunces', serif;
-  font-weight:560;
-  font-size:15px;
-  letter-spacing:-0.01em;
-  fill:var(--ink);
-  text-anchor:middle;
-  dominant-baseline:central;
-}
-.radial-core .core-sub{
-  font-family:'JetBrains Mono', monospace;
-  font-weight:500;
-  font-size:9px;
-  letter-spacing:0.07em;
-  fill:var(--ink-faint);
-  text-anchor:middle;
-}
-@keyframes coreFloat{
-  0%, 100%{transform:translateY(0);}
-  50%{transform:translateY(-3px);}
-}
+    .venue {
+      margin-top: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--ink-faint);
+    }
 
-.radial-node{
-  cursor:pointer;
-  animation:nodeFloat var(--fdur, 4s) ease-in-out infinite;
-  animation-delay:var(--fdelay, 0s);
-}
-.radial-node rect{
-  fill:var(--paper-raised);
-  stroke:var(--line-strong);
-  stroke-width:1.25;
-  transition:stroke 0.18s ease, fill 0.18s ease, filter 0.18s ease, transform 0.18s ease;
-  filter:drop-shadow(0 2px 5px rgba(28,29,31,0.08));
-  transform-box:fill-box;
-  transform-origin:center;
-}
-.radial-node text{
-  font-family:'Inter', sans-serif;
-  font-weight:700;
-  font-size:12.5px;
-  letter-spacing:0.01em;
-  text-anchor:middle;
-  dominant-baseline:central;
-  transition:fill 0.18s ease;
-}
-.radial-node.pitch text{fill:var(--pitch);}
-.radial-node.timbre text{fill:var(--timbre);}
-.radial-node.pitch rect{stroke:#bcd6cd;}
-.radial-node.timbre rect{stroke:#e3cba9;}
-.radial-node:hover rect, .radial-node:focus rect{
-  filter:drop-shadow(0 6px 14px rgba(28,29,31,0.16));
-  transform:scale(1.06);
-}
-.radial-node.pitch:hover rect, .radial-node.pitch:focus rect{
-  fill:var(--pitch); stroke:var(--pitch);
-}
-.radial-node.pitch:hover text, .radial-node.pitch:focus text{fill:#fff;}
-.radial-node.timbre:hover rect, .radial-node.timbre:focus rect{
-  fill:var(--timbre); stroke:var(--timbre);
-}
-.radial-node.timbre:hover text, .radial-node.timbre:focus text{fill:#fff;}
-.radial-node:focus{outline:none;}
-.radial-node:focus rect{stroke-width:2.25;}
-@keyframes nodeFloat{
-  0%, 100%{transform:translateY(0);}
-  50%{transform:translateY(-5px);}
-}
-@media (prefers-reduced-motion: reduce){
-  .radial-core, .radial-node{animation:none;}
-}
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-.radial-dot{
-  transition:r 0.18s ease;
-}
-.radial-node:hover .radial-dot, .radial-node:focus .radial-dot{
-  r:4.5;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
 
-.hero-legend{
-  display:flex;
-  gap:22px;
-  margin-top:14px;
-  flex-wrap:wrap;
-}
-@media (min-width:980px){.hero-legend{justify-content:center;}}
-.hero-legend .legend-inline{font-size:11.5px; color:var(--ink-soft);}
+    .btn:hover {
+      opacity: 0.82;
+    }
 
-.hero-copy{ }
-.hero-hint{
-  margin-top:10px;
-  font-size:13px;
-  color:var(--ink-faint);
-  font-style:italic;
-}
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line-strong);
+    }
 
-/* ---------- nav ---------- */
-nav.toc{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(247,245,240,0.94);
-  backdrop-filter:blur(6px);
-  border-bottom:var(--gut);
-}
-nav.toc .wrap{
-  display:flex;
-  gap:28px;
-  overflow-x:auto;
-  padding-top:14px;
-  padding-bottom:14px;
-  scrollbar-width:none;
-}
-nav.toc .wrap::-webkit-scrollbar{display:none;}
-nav.toc a{
-  font-family:'Inter', sans-serif;
-  font-weight:600;
-  font-size:12.5px;
-  letter-spacing:0.04em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  white-space:nowrap;
-  border-bottom:none;
-  padding-bottom:3px;
-  border-bottom:2px solid transparent;
-  transition:color 0.15s ease, border-color 0.15s ease;
-}
-nav.toc a:hover{color:var(--accent); border-bottom-color:var(--accent-warm);}
+    .btn.secondary:hover {
+      background: var(--paper-raised);
+      opacity: 1;
+      border-color: var(--ink-faint);
+    }
 
-/* ---------- sections ---------- */
-section{padding:56px 0;}
-section + section{border-top:var(--gut);}
+    /* simple staff motif, sits quietly under the hero, never touches the type */
+    .hero-staff {
+      margin-top: 48px;
+      height: 1px;
+      background: var(--line);
+      position: relative;
+    }
 
-.section-head{margin-bottom:30px; max-width:780px;}
-.section-head .eyebrow{margin-bottom:10px; display:block;}
-.section-head h2{font-size:clamp(1.4rem, 2.2vw, 1.7rem);}
-.section-head p.lede{
-  margin-top:13px;
-  color:var(--ink-soft);
-  font-size:15.5px;
-  line-height:1.7;
-  max-width:760px;
-  font-family:var(--font-serif-body);
-}
+    .hero-staff::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      width: 64px;
+      height: 3px;
+      background: var(--accent);
+    }
 
-p{margin:0 0 16px; max-width:760px;}
-p.justify, .abstract-card p, .access-card p, .license-list li{
-  font-family:var(--font-serif-body);
-  text-align:justify;
-  text-justify:inter-word;
-  hyphens:auto;
-  -webkit-hyphens:auto;
-}
-.prose{color:var(--ink-soft); font-size:15.5px; line-height:1.75; font-family:var(--font-serif-body);}
+    /* ---------- radial technique diagram (hero visual) ---------- */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
 
-/* ---------- abstract ---------- */
-.abstract-card{
-  position:relative;
-  background:linear-gradient(165deg, #ffffff 0%, #fdf6ec 100%);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:26px 28px 26px 30px;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 8px 24px -12px rgba(28,29,31,0.08);
-}
-.abstract-card::before{
-  content:"";
-  position:absolute;
-  left:0; top:14px; bottom:14px;
-  width:3px;
-  border-radius:2px;
-  background:linear-gradient(180deg, var(--accent-warm) 0%, var(--accent) 55%, var(--ink) 100%);
-}
-.abstract-card p{color:var(--ink); font-size:16px; line-height:1.75; max-width:none;}
-.abstract-card p:last-child{margin-bottom:0;}
+    @media (min-width:980px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(430px, 0.82fr);
+        align-items: center;
+        gap: 56px;
+      }
+    }
 
-/* ---------- architecture figures ---------- */
-.figure{margin:0 0 40px;}
-.figure:last-child{margin-bottom:0;}
-.figure img{
-  width:100%;
-  display:block;
-  border:var(--gut);
-  background:#fff;
-}
-.figure figcaption{
-  margin-top:12px;
-  font-size:13px;
-  color:var(--ink-soft);
-  line-height:1.6;
-  max-width:760px;
-}
+    .radial-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      margin: 36px auto 0;
+    }
 
-/* ---------- tabs ---------- */
-.tabbar{
-  display:flex;
-  gap:28px;
-  margin-bottom:24px;
-  border-bottom:var(--gut);
-}
-.tab-btn{
-  font-family:'Inter', sans-serif;
-  font-weight:600;
-  font-size:14px;
-  padding:0 0 12px;
-  background:none;
-  border:none;
-  color:var(--ink-faint);
-  cursor:pointer;
-  position:relative;
-  border-bottom:2px solid transparent;
-}
-.tab-btn[aria-selected="true"]{color:var(--ink);}
-.tab-btn.pitch[aria-selected="true"]{border-bottom-color:var(--pitch); color:var(--pitch);}
-.tab-btn.timbre[aria-selected="true"]{border-bottom-color:var(--timbre); color:var(--timbre);}
-.tab-panel{display:none;}
-.tab-panel.active{display:block; animation:fade 0.2s ease;}
-@keyframes fade{from{opacity:0;} to{opacity:1;}}
+    @media (min-width:980px) {
+      .radial-wrap {
+        margin: 0;
+        max-width: 540px;
+      }
+    }
 
-/* ---------- technique cards ---------- */
-.tech-card{
-  position:relative;
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:22px 24px;
-  margin-bottom:16px;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 6px 18px -10px rgba(28,29,31,0.10);
-  transition:box-shadow 0.2s ease, transform 0.2s ease;
-}
-.tech-card:last-child{margin-bottom:0;}
-.tech-card:hover{
-  box-shadow:0 2px 4px rgba(28,29,31,0.05), 0 10px 26px -10px rgba(28,29,31,0.14);
-  transform:translateY(-1px);
-}
-.tech-card::before{
-  content:"";
-  position:absolute;
-  left:0; top:14px; bottom:14px;
-  width:3px;
-  border-radius:2px;
-}
-.tech-card-head{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-}
-.tech-name{
-  font-family:'Fraunces', serif;
-  font-weight:540;
-  font-size:18px;
-}
-.tech-card.pitch, .tech-card.timbre{padding-left:28px;}
-.tech-card.pitch::before{background:linear-gradient(180deg, var(--pitch) 0%, #6fae9c 100%);}
-.tech-card.timbre::before{background:linear-gradient(180deg, var(--timbre) 0%, #c89a63 100%);}
-.tech-card.pitch .tech-name{color:var(--pitch);}
-.tech-card.timbre .tech-name{color:var(--timbre);}
-.tech-card.flash{
-  animation:flashHighlight 1.4s ease;
-}
-@keyframes flashHighlight{
-  0%{box-shadow:0 0 0 3px rgba(168,57,47,0.18), 0 6px 18px -10px rgba(28,29,31,0.10);}
-  100%{box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 6px 18px -10px rgba(28,29,31,0.10);}
-}
-@media (prefers-reduced-motion: reduce){
-  .tech-card.flash{animation:none; box-shadow:0 0 0 3px rgba(168,57,47,0.18);}
-}
-.tech-desc{
-  font-size:12.5px;
-  color:var(--ink-faint);
-  font-style:italic;
-}
+    .radial-wrap svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
 
-.sample-row{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:30px;
-}
-@media (max-width:760px){
-  .sample-row{grid-template-columns:1fr; gap:16px;}
-}
-.sample-cell{ }
-.sample-label{
-  font-family:'JetBrains Mono', monospace;
-  font-size:10.5px;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--ink-faint);
-  margin-bottom:8px;
-}
-.lyric-line{
-  font-size:14.5px;
-  margin-bottom:9px;
-  line-height:1.5;
-}
-.lyric-line b{
-  color:var(--accent);
-  font-weight:700;
-}
-audio{
-  width:100%;
-  height:32px;
-  display:block;
-}
-audio::-webkit-media-controls-panel{
-  background-color:var(--paper);
-}
+    .radial-ring {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1;
+    }
 
-/* ---------- compare cards (regular vs sintech, GT/STan/SinTechSVS) ---------- */
-.compare-card{
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:20px 22px;
-  margin-bottom:14px;
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:34px;
-  align-items:start;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 6px 18px -10px rgba(28,29,31,0.10);
-  transition:box-shadow 0.2s ease, transform 0.2s ease;
-}
-.compare-card:hover{
-  box-shadow:0 2px 4px rgba(28,29,31,0.05), 0 10px 26px -10px rgba(28,29,31,0.14);
-  transform:translateY(-1px);
-}
-.compare-card:last-child{margin-bottom:0;}
-@media (max-width:680px){
-  .compare-card{grid-template-columns:1fr; gap:14px;}
-}
-.compare-meta .tech-name{font-size:15px; display:block; margin-bottom:6px;}
-.compare-meta .lyric-line{font-size:13px; color:var(--ink-soft); margin-bottom:0;}
-.compare-meta.pitch .tech-name{color:var(--pitch);}
-.compare-meta.timbre .tech-name{color:var(--timbre);}
+    .radial-ring.pulse {
+      stroke: var(--line-strong);
+      animation: ringPulse 4.5s ease-in-out infinite;
+      transform-origin: 300px 260px;
+    }
 
-.compare-pair{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
-@media (max-width:520px){
-  .compare-pair{grid-template-columns:1fr; gap:14px;}
-}
+    .radial-ring.compass {
+      stroke: var(--accent-warm);
+      stroke-width: 1.1;
+      stroke-dasharray: 1.5 11;
+      stroke-linecap: round;
+      opacity: 0.55;
+      animation: compassSpin 50s linear infinite;
+      transform-origin: 300px 260px;
+    }
 
-/* recommendation: three equal columns */
-.compare-trio{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:24px;
-}
-@media (max-width:680px){
-  .compare-trio{grid-template-columns:1fr; gap:14px;}
-}
-.trio-head{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:24px;
-  padding-bottom:10px;
-  margin-bottom:6px;
-  border-bottom:1px solid var(--line-strong);
-}
-@media (max-width:680px){
-  .trio-head{display:none;}
-}
-.trio-head .sample-label{margin-bottom:0;}
+    @keyframes ringPulse {
 
-/* ---------- stats / data figures ---------- */
-.stats-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:36px;
-}
-@media (max-width:700px){.stats-grid{grid-template-columns:1fr; gap:32px;}}
-.stat-card h3{font-size:13px; font-family:'JetBrains Mono',monospace; font-weight:500; letter-spacing:0.02em; margin-bottom:14px; color:var(--ink-soft);}
-.stat-card img{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:10px;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 6px 18px -10px rgba(28,29,31,0.10);
-}
+      0%,
+      100% {
+        opacity: 0.35;
+        transform: scale(1);
+      }
 
-/* ---------- data access block ---------- */
-.access-card{
-  background:linear-gradient(165deg, #ffffff 0%, #fdf6ec 100%);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:28px;
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:36px;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 8px 24px -12px rgba(28,29,31,0.08);
-}
-@media (max-width:700px){.access-card{grid-template-columns:1fr; gap:24px;}}
-.access-card h3{font-size:16px; font-weight:600; font-family:'Inter',sans-serif; margin-bottom:10px;}
-.access-card p{font-size:14.5px;}
-.req-list{
-  list-style:none;
-  margin:0; padding:0;
-  font-family:'JetBrains Mono', monospace;
-  font-size:13px;
-  color:var(--ink-soft);
-}
-.req-list li{
-  padding:9px 0;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  gap:10px;
-}
-.req-list li:first-child{padding-top:0;}
-.req-list li:last-child{border-bottom:none;}
-.req-list li::before{content:"–"; color:var(--accent);}
+      50% {
+        opacity: 0.8;
+        transform: scale(1.015);
+      }
+    }
 
-/* ---------- unseen samples ---------- */
-.unseen-card{
-  position:relative;
-  background:var(--paper-raised);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:24px 26px;
-  margin-bottom:16px;
-  box-shadow:0 1px 2px rgba(28,29,31,0.04), 0 6px 18px -10px rgba(28,29,31,0.10);
-  transition:box-shadow 0.2s ease, transform 0.2s ease;
-}
-.unseen-card:hover{
-  box-shadow:0 2px 4px rgba(28,29,31,0.05), 0 10px 26px -10px rgba(28,29,31,0.14);
-  transform:translateY(-1px);
-}
-.unseen-card:last-child{margin-bottom:0;}
-.unseen-card h4{
-  font-family:'JetBrains Mono', monospace;
-  font-size:12px;
-  letter-spacing:0.07em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin:0 0 16px;
-}
-.seq-row{
-  display:grid;
-  grid-template-columns:110px 1fr;
-  gap:14px;
-  font-size:13.5px;
-  padding:9px 0;
-  border-top:1px solid var(--line);
-  align-items:baseline;
-}
-.seq-row:first-of-type{border-top:none;}
-@media (max-width:560px){
-  .seq-row{grid-template-columns:1fr; gap:4px;}
-}
-.seq-row .seq-label{
-  font-family:'JetBrains Mono', monospace;
-  font-size:11px;
-  color:var(--ink-faint);
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-}
-.seq-row .seq-val{
-  font-family:'JetBrains Mono', monospace;
-  font-size:12px;
-  line-height:1.8;
-  color:var(--ink);
-  word-break:break-word;
-}
-.seq-val .tag{
-  display:inline-block;
-  padding:1px 6px;
-  margin:1px 1px;
-  border-radius:2px;
-  color:var(--ink-faint);
-}
-.seq-val .tag.active{background:#efe7da; color:var(--accent-dim); font-weight:600;}
-.unseen-audio{margin-top:16px;}
+    @keyframes compassSpin {
+      0% {
+        transform: rotate(0deg);
+      }
 
-/* ---------- legend (single, reused, minimal) ---------- */
-.legend-inline{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:12px;
-}
-.legend-inline .dot{width:7px; height:7px; border-radius:50%; display:inline-block;}
-.legend-inline .dot.pitch{background:var(--pitch);}
-.legend-inline .dot.timbre{background:var(--timbre);}
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
-/* ---------- citation ---------- */
-.citation-block{
-  background:#181a1d;
-  color:#cfcbc0;
-  border-radius:var(--radius);
-  padding:24px 26px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:12px;
-  line-height:1.7;
-  overflow-x:auto;
-  position:relative;
-}
-.copy-btn{
-  position:absolute;
-  top:14px; right:14px;
-  background:#2a2d33;
-  color:#cfcbc0;
-  border:1px solid #3c3f46;
-  font-family:'Inter',sans-serif;
-  font-size:12px;
-  font-weight:600;
-  padding:6px 12px;
-  border-radius:2px;
-  cursor:pointer;
-}
-.copy-btn:hover{background:#3c3f46;}
+    @media (prefers-reduced-motion: reduce) {
 
-/* ---------- license / footer ---------- */
-.license-list{
-  font-size:14px;
-  color:var(--ink-soft);
-  max-width:680px;
-  padding-left:20px;
-}
-.license-list li{margin-bottom:10px;}
+      .radial-ring.pulse,
+      .radial-ring.compass {
+        animation: none;
+      }
+    }
 
-footer{
-  padding:32px 0 56px;
-  font-size:13px;
-  color:var(--ink-faint);
-}
-footer .wrap{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;}
-footer a{color:var(--ink-faint);}
-footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
+    .radial-spoke {
+      stroke: var(--line);
+      stroke-width: 1;
+      opacity: 0.6;
+    }
 
-.skip-link{
-  position:absolute; left:-9999px; top:auto;
-}
-.skip-link:focus{
-  position:fixed; left:16px; top:16px; z-index:100;
-  background:var(--ink); color:var(--paper); padding:10px 16px; border-radius:4px;
-}
+    .radial-core {
+      cursor: default;
+      animation: coreFloat 6s ease-in-out infinite;
+      transform-origin: 300px 260px;
+    }
 
-@media (max-width:600px){
-  section{padding:44px 0;}
-  .wrap{padding:0 20px;}
-  header.hero{padding:56px 0 44px;}
-  p.justify, .abstract-card p, .access-card p, .license-list li, .prose{
-    text-align:left;
-    hyphens:none;
-    -webkit-hyphens:none;
-  }
-}
-</style>
+    .radial-core circle {
+      fill: url(#coreGrad);
+      stroke: var(--ink);
+      stroke-width: 1.25;
+      filter: drop-shadow(0 4px 10px rgba(28, 29, 31, 0.10));
+    }
+
+    .radial-core text {
+      font-family: 'Fraunces', serif;
+      font-weight: 560;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      fill: var(--ink);
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .radial-core .core-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 0.07em;
+      fill: var(--ink-faint);
+      text-anchor: middle;
+    }
+
+    @keyframes coreFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    .radial-node {
+      cursor: pointer;
+      animation: nodeFloat var(--fdur, 4s) ease-in-out infinite;
+      animation-delay: var(--fdelay, 0s);
+    }
+
+    .radial-node rect {
+      fill: var(--paper-raised);
+      stroke: var(--line-strong);
+      stroke-width: 1.25;
+      transition: stroke 0.18s ease, fill 0.18s ease, filter 0.18s ease, transform 0.18s ease;
+      filter: drop-shadow(0 2px 5px rgba(28, 29, 31, 0.08));
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .radial-node text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: 0.01em;
+      text-anchor: middle;
+      dominant-baseline: central;
+      transition: fill 0.18s ease;
+    }
+
+    .radial-node.pitch text {
+      fill: var(--pitch);
+    }
+
+    .radial-node.timbre text {
+      fill: var(--timbre);
+    }
+
+    .radial-node.pitch rect {
+      stroke: #bcd6cd;
+    }
+
+    .radial-node.timbre rect {
+      stroke: #e3cba9;
+    }
+
+    .radial-node:hover rect,
+    .radial-node:focus rect {
+      filter: drop-shadow(0 6px 14px rgba(28, 29, 31, 0.16));
+      transform: scale(1.06);
+    }
+
+    .radial-node.pitch:hover rect,
+    .radial-node.pitch:focus rect {
+      fill: var(--pitch);
+      stroke: var(--pitch);
+    }
+
+    .radial-node.pitch:hover text,
+    .radial-node.pitch:focus text {
+      fill: #fff;
+    }
+
+    .radial-node.timbre:hover rect,
+    .radial-node.timbre:focus rect {
+      fill: var(--timbre);
+      stroke: var(--timbre);
+    }
+
+    .radial-node.timbre:hover text,
+    .radial-node.timbre:focus text {
+      fill: #fff;
+    }
+
+    .radial-node:focus {
+      outline: none;
+    }
+
+    .radial-node:focus rect {
+      stroke-width: 2.25;
+    }
+
+    @keyframes nodeFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .radial-core,
+      .radial-node {
+        animation: none;
+      }
+    }
+
+    .radial-dot {
+      transition: r 0.18s ease;
+    }
+
+    .radial-node:hover .radial-dot,
+    .radial-node:focus .radial-dot {
+      r: 4.5;
+    }
+
+    .hero-legend {
+      display: flex;
+      gap: 22px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width:980px) {
+      .hero-legend {
+        justify-content: center;
+      }
+    }
+
+    .hero-legend .legend-inline {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+    }
+
+    .hero-copy {}
+
+    .hero-hint {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-style: italic;
+    }
+
+    /* ---------- nav ---------- */
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 245, 240, 0.94);
+      backdrop-filter: blur(6px);
+      border-bottom: var(--gut);
+    }
+
+    nav.toc .wrap {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      scrollbar-width: none;
+    }
+
+    nav.toc .wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    nav.toc a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap;
+      border-bottom: none;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    nav.toc a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent-warm);
+    }
+
+    /* ---------- sections ---------- */
+    section {
+      padding: 56px 0;
+    }
+
+    section+section {
+      border-top: var(--gut);
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+      max-width: 780px;
+    }
+
+    .section-head .eyebrow {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+    }
+
+    .section-head p.lede {
+      margin-top: 13px;
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.7;
+      max-width: 760px;
+      font-family: var(--font-serif-body);
+    }
+
+    p {
+      margin: 0 0 16px;
+      max-width: 760px;
+    }
+
+    p.justify,
+    .abstract-card p,
+    .access-card p,
+    .license-list li {
+      font-family: var(--font-serif-body);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+    }
+
+    .prose {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.75;
+      font-family: var(--font-serif-body);
+    }
+
+    /* ---------- abstract ---------- */
+    .abstract-card {
+      position: relative;
+      background: linear-gradient(165deg, #ffffff 0%, #fdf6ec 100%);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 26px 28px 26px 30px;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 8px 24px -12px rgba(28, 29, 31, 0.08);
+    }
+
+    .abstract-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 3px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--accent-warm) 0%, var(--accent) 55%, var(--ink) 100%);
+    }
+
+    .abstract-card p {
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: none;
+    }
+
+    .abstract-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- architecture figures ---------- */
+    .figure {
+      margin: 0 0 40px;
+    }
+
+    .figure:last-child {
+      margin-bottom: 0;
+    }
+
+    .figure img {
+      width: 100%;
+      display: block;
+      border: var(--gut);
+      background: #fff;
+    }
+
+    .figure figcaption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    /* ---------- tabs ---------- */
+    .tabbar {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 24px;
+      border-bottom: var(--gut);
+    }
+
+    .tab-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 0 0 12px;
+      background: none;
+      border: none;
+      color: var(--ink-faint);
+      cursor: pointer;
+      position: relative;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn[aria-selected="true"] {
+      color: var(--ink);
+    }
+
+    .tab-btn.pitch[aria-selected="true"] {
+      border-bottom-color: var(--pitch);
+      color: var(--pitch);
+    }
+
+    .tab-btn.timbre[aria-selected="true"] {
+      border-bottom-color: var(--timbre);
+      color: var(--timbre);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fade 0.2s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ---------- technique cards ---------- */
+    .tech-card {
+      position: relative;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .tech-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .tech-card:hover {
+      box-shadow: 0 2px 4px rgba(28, 29, 31, 0.05), 0 10px 26px -10px rgba(28, 29, 31, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .tech-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 3px;
+      border-radius: 2px;
+    }
+
+    .tech-card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tech-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 540;
+      font-size: 18px;
+    }
+
+    .tech-card.pitch,
+    .tech-card.timbre {
+      padding-left: 28px;
+    }
+
+    .tech-card.pitch::before {
+      background: linear-gradient(180deg, var(--pitch) 0%, #6fae9c 100%);
+    }
+
+    .tech-card.timbre::before {
+      background: linear-gradient(180deg, var(--timbre) 0%, #c89a63 100%);
+    }
+
+    .tech-card.pitch .tech-name {
+      color: var(--pitch);
+    }
+
+    .tech-card.timbre .tech-name {
+      color: var(--timbre);
+    }
+
+    .tech-card.flash {
+      animation: flashHighlight 1.4s ease;
+    }
+
+    @keyframes flashHighlight {
+      0% {
+        box-shadow: 0 0 0 3px rgba(168, 57, 47, 0.18), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+      }
+
+      100% {
+        box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tech-card.flash {
+        animation: none;
+        box-shadow: 0 0 0 3px rgba(168, 57, 47, 0.18);
+      }
+    }
+
+    .tech-desc {
+      font-size: 12.5px;
+      color: var(--ink-faint);
+      font-style: italic;
+    }
+
+    .sample-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width:760px) {
+      .sample-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .sample-cell {}
+
+    .sample-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+
+    .lyric-line {
+      font-size: 14.5px;
+      margin-bottom: 9px;
+      line-height: 1.5;
+    }
+
+    .lyric-line b {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    audio {
+      width: 100%;
+      height: 32px;
+      display: block;
+    }
+
+    audio::-webkit-media-controls-panel {
+      background-color: var(--paper);
+    }
+
+    /* ---------- compare cards (regular vs sintech, GT/STan/SinTechSVS) ---------- */
+    .compare-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 34px;
+      align-items: start;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .compare-card:hover {
+      box-shadow: 0 2px 4px rgba(28, 29, 31, 0.05), 0 10px 26px -10px rgba(28, 29, 31, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .compare-card:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width:680px) {
+      .compare-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    .compare-meta .tech-name {
+      font-size: 15px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .compare-meta .lyric-line {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 0;
+    }
+
+    .compare-meta.pitch .tech-name {
+      color: var(--pitch);
+    }
+
+    .compare-meta.timbre .tech-name {
+      color: var(--timbre);
+    }
+
+    .compare-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width:520px) {
+      .compare-pair {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    /* recommendation: three equal columns */
+    .compare-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width:680px) {
+      .compare-trio {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    .trio-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      padding-bottom: 10px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    @media (max-width:680px) {
+      .trio-head {
+        display: none;
+      }
+    }
+
+    .trio-head .sample-label {
+      margin-bottom: 0;
+    }
+
+    /* ---------- stats / data figures ---------- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    @media (max-width:700px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .stat-card h3 {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      color: var(--ink-soft);
+    }
+
+    .stat-card img {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+    }
+
+    /* ---------- data access block ---------- */
+    .access-card {
+      background: linear-gradient(165deg, #ffffff 0%, #fdf6ec 100%);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 36px;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 8px 24px -12px rgba(28, 29, 31, 0.08);
+    }
+
+    @media (max-width:700px) {
+      .access-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .access-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .access-card p {
+      font-size: 14.5px;
+    }
+
+    .req-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .req-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+    }
+
+    .req-list li:first-child {
+      padding-top: 0;
+    }
+
+    .req-list li:last-child {
+      border-bottom: none;
+    }
+
+    .req-list li::before {
+      content: "–";
+      color: var(--accent);
+    }
+
+    /* ---------- unseen samples ---------- */
+    .unseen-card {
+      position: relative;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px 26px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 2px rgba(28, 29, 31, 0.04), 0 6px 18px -10px rgba(28, 29, 31, 0.10);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .unseen-card:hover {
+      box-shadow: 0 2px 4px rgba(28, 29, 31, 0.05), 0 10px 26px -10px rgba(28, 29, 31, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .unseen-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .unseen-card h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+
+    .seq-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      font-size: 13.5px;
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .seq-row:first-of-type {
+      border-top: none;
+    }
+
+    @media (max-width:560px) {
+      .seq-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    .seq-row .seq-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .seq-row .seq-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--ink);
+      word-break: break-word;
+    }
+
+    .seq-val .tag {
+      display: inline-block;
+      padding: 1px 6px;
+      margin: 1px 1px;
+      border-radius: 2px;
+      color: var(--ink-faint);
+    }
+
+    .seq-val .tag.active {
+      background: #efe7da;
+      color: var(--accent-dim);
+      font-weight: 600;
+    }
+
+    .unseen-audio {
+      margin-top: 16px;
+    }
+
+    /* ---------- legend (single, reused, minimal) ---------- */
+    .legend-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .legend-inline .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .legend-inline .dot.pitch {
+      background: var(--pitch);
+    }
+
+    .legend-inline .dot.timbre {
+      background: var(--timbre);
+    }
+
+    /* ---------- citation ---------- */
+    .citation-block {
+      background: #181a1d;
+      color: #cfcbc0;
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #2a2d33;
+      color: #cfcbc0;
+      border: 1px solid #3c3f46;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: #3c3f46;
+    }
+
+    /* ---------- license / footer ---------- */
+    .license-list {
+      font-size: 14px;
+      color: var(--ink-soft);
+      max-width: 680px;
+      padding-left: 20px;
+    }
+
+    .license-list li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      padding: 32px 0 56px;
+      font-size: 13px;
+      color: var(--ink-faint);
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--ink-faint);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      z-index: 100;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 10px 16px;
+      border-radius: 4px;
+    }
+
+    @media (max-width:600px) {
+      section {
+        padding: 44px 0;
+      }
+
+      .wrap {
+        padding: 0 20px;
+      }
+
+      header.hero {
+        padding: 56px 0 44px;
+      }
+
+      p.justify,
+      .abstract-card p,
+      .access-card p,
+      .license-list li,
+      .prose {
+        text-align: left;
+        hyphens: none;
+        -webkit-hyphens: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- ============ NAV ============ -->
-<nav class="toc" aria-label="Section navigation">
-  <div class="wrap">
-    <a href="#abstract">Abstract</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#annotations">Annotations</a>
-    <a href="#data">Data</a>
-    <a href="#control-samples">Technique Control</a>
-    <a href="#recommendation">Recommendation</a>
-    <a href="#unseen">Unseen Samples</a>
-    <a href="#citation">Citation</a>
-    <a href="#license">License</a>
-  </div>
-</nav>
+  <!-- ============ NAV ============ -->
+  <nav class="toc" aria-label="Section navigation">
+    <div class="wrap">
+      <a href="#abstract">Abstract</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#annotations">Annotations</a>
+      <a href="#data">Data</a>
+      <a href="#control-samples">Technique Control</a>
+      <a href="#recommendation">Recommendation</a>
+      <a href="#unseen">Unseen Samples</a>
+      <a href="#citation">Citation</a>
+      <a href="#license">License</a>
+    </div>
+  </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">IEEE / ACM Transactions on Audio, Speech, and Language Processing · 2024</span>
-        <h1 class="title">SinTechSVS — A <em>Singing Technique</em> Controllable Singing Voice Synthesis System</h1>
-        <div class="authors">
-          <span class="name">Junchuan Zhao</span> · <span class="name">Low Qi Hong Chetwin</span> · <span class="name">Ye Wang</span>
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">IEEE / ACM Transactions on Audio, Speech, and Language Processing · 2024</span>
+          <h1 class="title">SinTechSVS — A <em>Singing Technique</em> Controllable Singing Voice Synthesis System</h1>
+          <div class="authors">
+            <span class="name">Junchuan Zhao</span> · <span class="name">Low Qi Hong Chetwin</span> · <span
+              class="name">Ye Wang</span>
+          </div>
+          <div class="venue">National University of Singapore, School of Computing</div>
+          <div class="hero-actions">
+            <a href="https://smcnus.comp.nus.edu.sg/archive/pdf/2024/2024_SinTechSVS_IEEETrans.pdf" class="btn">PDF</a>
+            <a href="#control-samples" class="btn secondary">Listen to samples</a>
+            <a href="https://huggingface.co/datasets/Chanson-0803/SinTechSVS-singing-technique-annotation"
+              class="btn secondary">Data</a>
+          </div>
+          <div class="hero-staff" aria-hidden="true"></div>
         </div>
-        <div class="venue">National University of Singapore, School of Computing</div>
-        <div class="hero-actions">
-          <a href="https://smcnus.comp.nus.edu.sg/archive/pdf/2024/2024_SinTechSVS_IEEETrans.pdf" class="btn">PDF</a>
-          <a href="#control-samples" class="btn secondary">Listen to samples</a>
-          <a href="https://huggingface.co/datasets/Chanson-0803/SinTechSVS-singing-technique-annotation" class="btn secondary">Data</a>
+
+        <div class="radial-wrap">
+          <svg viewBox="20 60 560 400" role="img" aria-labelledby="radialTitle radialDesc">
+            <title id="radialTitle">Eight singing techniques surrounding the SVS core</title>
+            <desc id="radialDesc">A radial diagram showing four pitch techniques — scooping, bend, melisma, drop — on
+              the left, and four timbre techniques — vocal fry, falsetto, breathy, belting — on the right, all connected
+              to a central SVS node. Each technique is clickable and jumps to its section.</desc>
+            <defs>
+              <radialGradient id="coreGrad" cx="35%" cy="32%" r="75%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#f0ecdf" />
+              </radialGradient>
+              <linearGradient id="spokeGradL" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2f6e62" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#2f6e62" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="spokeGradR" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#946134" stop-opacity="0" />
+                <stop offset="100%" stop-color="#946134" stop-opacity="0.5" />
+              </linearGradient>
+              <radialGradient id="ringTint" cx="50%" cy="50%" r="50%">
+                <stop offset="50%" stop-color="#d97a4d" stop-opacity="0" />
+                <stop offset="100%" stop-color="#d97a4d" stop-opacity="0.07" />
+              </radialGradient>
+            </defs>
+
+            <circle cx="300" cy="260" r="185" fill="url(#ringTint)" />
+            <circle class="radial-ring compass" cx="300" cy="260" r="165" />
+            <circle class="radial-ring pulse" cx="300" cy="260" r="120" />
+            <circle class="radial-ring" cx="300" cy="260" r="78" />
+
+            <!-- spokes: pitch (left, teal gradient) -->
+            <line class="radial-spoke" x1="300" y1="260" x2="140.6" y2="217.3" stroke="url(#spokeGradL)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="140.6" y2="302.7" stroke="url(#spokeGradL)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="193.9" y2="133.6" stroke="url(#spokeGradL)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="193.9" y2="386.4" stroke="url(#spokeGradL)"
+              stroke-width="1.5" />
+            <!-- spokes: timbre (right, amber/clay gradient) -->
+            <line class="radial-spoke" x1="300" y1="260" x2="459.4" y2="217.3" stroke="url(#spokeGradR)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="459.4" y2="302.7" stroke="url(#spokeGradR)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="406.1" y2="133.6" stroke="url(#spokeGradR)"
+              stroke-width="1.5" />
+            <line class="radial-spoke" x1="300" y1="260" x2="406.1" y2="386.4" stroke="url(#spokeGradR)"
+              stroke-width="1.5" />
+
+            <!-- core node -->
+            <g class="radial-core">
+              <circle cx="300" cy="260" r="60" />
+              <text x="300" y="252">SinTechSVS</text>
+              <text class="core-sub" x="300" y="276">core system</text>
+            </g>
+
+            <!-- pitch technique nodes -->
+            <g class="radial-node pitch" style="--fdur:4.1s; --fdelay:-0.4s" tabindex="0" role="link"
+              aria-label="Jump to scooping samples" data-target="tech-scooping" data-tab="tab-anno-pitch">
+              <rect x="45.8" y="200.3" width="88.8" height="34" rx="17" stroke-width="1.25" />
+              <text x="90.2" y="217.3">Scooping</text>
+              <circle class="radial-dot" cx="140.6" cy="217.3" r="2.6" fill="var(--pitch)" />
+            </g>
+            <g class="radial-node pitch" style="--fdur:3.6s; --fdelay:-1.8s" tabindex="0" role="link"
+              aria-label="Jump to bend samples" data-target="tech-bend" data-tab="tab-anno-pitch">
+              <rect x="76.2" y="285.7" width="58.4" height="34" rx="17" stroke-width="1.25" />
+              <text x="105.4" y="302.7">Bend</text>
+              <circle class="radial-dot" cx="140.6" cy="302.7" r="2.6" fill="var(--pitch)" />
+            </g>
+            <g class="radial-node pitch" style="--fdur:4.6s; --fdelay:-2.6s" tabindex="0" role="link"
+              aria-label="Jump to melisma samples" data-target="tech-melisma" data-tab="tab-anno-pitch">
+              <rect x="106.7" y="116.6" width="81.2" height="34" rx="17" stroke-width="1.25" />
+              <text x="147.3" y="133.6">Melisma</text>
+              <circle class="radial-dot" cx="193.9" cy="133.6" r="2.6" fill="var(--pitch)" />
+            </g>
+            <g class="radial-node pitch" style="--fdur:3.9s; --fdelay:-0.9s" tabindex="0" role="link"
+              aria-label="Jump to drop samples" data-target="tech-drop" data-tab="tab-anno-pitch">
+              <rect x="129.5" y="369.4" width="58.4" height="34" rx="17" stroke-width="1.25" />
+              <text x="158.7" y="386.4">Drop</text>
+              <circle class="radial-dot" cx="193.9" cy="386.4" r="2.6" fill="var(--pitch)" />
+            </g>
+
+            <!-- timbre technique nodes -->
+            <g class="radial-node timbre" style="--fdur:4.3s; --fdelay:-1.3s" tabindex="0" role="link"
+              aria-label="Jump to vocal fry samples" data-target="tech-vocalfry" data-tab="tab-anno-timbre">
+              <rect x="465.4" y="200.3" width="96.4" height="34" rx="17" stroke-width="1.25" />
+              <text x="513.6" y="217.3">Vocal Fry</text>
+              <circle class="radial-dot" cx="459.4" cy="217.3" r="2.6" fill="var(--timbre)" />
+            </g>
+            <g class="radial-node timbre" style="--fdur:3.8s; --fdelay:-2.2s" tabindex="0" role="link"
+              aria-label="Jump to falsetto samples" data-target="tech-falsetto" data-tab="tab-anno-timbre">
+              <rect x="465.4" y="285.7" width="88.8" height="34" rx="17" stroke-width="1.25" />
+              <text x="509.8" y="302.7">Falsetto</text>
+              <circle class="radial-dot" cx="459.4" cy="302.7" r="2.6" fill="var(--timbre)" />
+            </g>
+            <g class="radial-node timbre" style="--fdur:4.4s; --fdelay:-0.2s" tabindex="0" role="link"
+              aria-label="Jump to breathy samples" data-target="tech-breathy" data-tab="tab-anno-timbre">
+              <rect x="412.1" y="116.6" width="81.2" height="34" rx="17" stroke-width="1.25" />
+              <text x="452.7" y="133.6">Breathy</text>
+              <circle class="radial-dot" cx="406.1" cy="133.6" r="2.6" fill="var(--timbre)" />
+            </g>
+            <g class="radial-node timbre" style="--fdur:3.7s; --fdelay:-3.1s" tabindex="0" role="link"
+              aria-label="Jump to belting samples" data-target="tech-belting" data-tab="tab-anno-timbre">
+              <rect x="412.1" y="369.4" width="81.2" height="34" rx="17" stroke-width="1.25" />
+              <text x="452.7" y="386.4">Belting</text>
+              <circle class="radial-dot" cx="406.1" cy="386.4" r="2.6" fill="var(--timbre)" />
+            </g>
+          </svg>
+          <div class="hero-legend">
+            <span class="legend-inline"><span class="dot pitch"></span>Pitch techniques</span>
+            <span class="legend-inline"><span class="dot timbre"></span>Timbre techniques</span>
+          </div>
+          <p class="hero-hint">Click a technique to jump to its samples.</p>
         </div>
-        <div class="hero-staff" aria-hidden="true"></div>
-      </div>
-
-      <div class="radial-wrap">
-        <svg viewBox="20 60 560 400" role="img" aria-labelledby="radialTitle radialDesc">
-          <title id="radialTitle">Eight singing techniques surrounding the SVS core</title>
-          <desc id="radialDesc">A radial diagram showing four pitch techniques — scooping, bend, melisma, drop — on the left, and four timbre techniques — vocal fry, falsetto, breathy, belting — on the right, all connected to a central SVS node. Each technique is clickable and jumps to its section.</desc>
-          <defs>
-            <radialGradient id="coreGrad" cx="35%" cy="32%" r="75%">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#f0ecdf"/>
-            </radialGradient>
-            <linearGradient id="spokeGradL" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#2f6e62" stop-opacity="0.5"/>
-              <stop offset="100%" stop-color="#2f6e62" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="spokeGradR" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#946134" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#946134" stop-opacity="0.5"/>
-            </linearGradient>
-            <radialGradient id="ringTint" cx="50%" cy="50%" r="50%">
-              <stop offset="50%" stop-color="#d97a4d" stop-opacity="0"/>
-              <stop offset="100%" stop-color="#d97a4d" stop-opacity="0.07"/>
-            </radialGradient>
-          </defs>
-
-          <circle cx="300" cy="260" r="185" fill="url(#ringTint)"/>
-          <circle class="radial-ring compass" cx="300" cy="260" r="165"/>
-          <circle class="radial-ring pulse" cx="300" cy="260" r="120"/>
-          <circle class="radial-ring" cx="300" cy="260" r="78"/>
-
-          <!-- spokes: pitch (left, teal gradient) -->
-          <line class="radial-spoke" x1="300" y1="260" x2="140.6" y2="217.3" stroke="url(#spokeGradL)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="140.6" y2="302.7" stroke="url(#spokeGradL)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="193.9" y2="133.6" stroke="url(#spokeGradL)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="193.9" y2="386.4" stroke="url(#spokeGradL)" stroke-width="1.5"/>
-          <!-- spokes: timbre (right, amber/clay gradient) -->
-          <line class="radial-spoke" x1="300" y1="260" x2="459.4" y2="217.3" stroke="url(#spokeGradR)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="459.4" y2="302.7" stroke="url(#spokeGradR)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="406.1" y2="133.6" stroke="url(#spokeGradR)" stroke-width="1.5"/>
-          <line class="radial-spoke" x1="300" y1="260" x2="406.1" y2="386.4" stroke="url(#spokeGradR)" stroke-width="1.5"/>
-
-          <!-- core node -->
-          <g class="radial-core">
-            <circle cx="300" cy="260" r="60"/>
-            <text x="300" y="252">SinTechSVS</text>
-            <text class="core-sub" x="300" y="276">core system</text>
-          </g>
-
-          <!-- pitch technique nodes -->
-          <g class="radial-node pitch" style="--fdur:4.1s; --fdelay:-0.4s" tabindex="0" role="link" aria-label="Jump to scooping samples" data-target="tech-scooping" data-tab="tab-anno-pitch">
-            <rect x="45.8" y="200.3" width="88.8" height="34" rx="17" stroke-width="1.25"/>
-            <text x="90.2" y="217.3">Scooping</text>
-            <circle class="radial-dot" cx="140.6" cy="217.3" r="2.6" fill="var(--pitch)"/>
-          </g>
-          <g class="radial-node pitch" style="--fdur:3.6s; --fdelay:-1.8s" tabindex="0" role="link" aria-label="Jump to bend samples" data-target="tech-bend" data-tab="tab-anno-pitch">
-            <rect x="76.2" y="285.7" width="58.4" height="34" rx="17" stroke-width="1.25"/>
-            <text x="105.4" y="302.7">Bend</text>
-            <circle class="radial-dot" cx="140.6" cy="302.7" r="2.6" fill="var(--pitch)"/>
-          </g>
-          <g class="radial-node pitch" style="--fdur:4.6s; --fdelay:-2.6s" tabindex="0" role="link" aria-label="Jump to melisma samples" data-target="tech-melisma" data-tab="tab-anno-pitch">
-            <rect x="106.7" y="116.6" width="81.2" height="34" rx="17" stroke-width="1.25"/>
-            <text x="147.3" y="133.6">Melisma</text>
-            <circle class="radial-dot" cx="193.9" cy="133.6" r="2.6" fill="var(--pitch)"/>
-          </g>
-          <g class="radial-node pitch" style="--fdur:3.9s; --fdelay:-0.9s" tabindex="0" role="link" aria-label="Jump to drop samples" data-target="tech-drop" data-tab="tab-anno-pitch">
-            <rect x="129.5" y="369.4" width="58.4" height="34" rx="17" stroke-width="1.25"/>
-            <text x="158.7" y="386.4">Drop</text>
-            <circle class="radial-dot" cx="193.9" cy="386.4" r="2.6" fill="var(--pitch)"/>
-          </g>
-
-          <!-- timbre technique nodes -->
-          <g class="radial-node timbre" style="--fdur:4.3s; --fdelay:-1.3s" tabindex="0" role="link" aria-label="Jump to vocal fry samples" data-target="tech-vocalfry" data-tab="tab-anno-timbre">
-            <rect x="465.4" y="200.3" width="96.4" height="34" rx="17" stroke-width="1.25"/>
-            <text x="513.6" y="217.3">Vocal Fry</text>
-            <circle class="radial-dot" cx="459.4" cy="217.3" r="2.6" fill="var(--timbre)"/>
-          </g>
-          <g class="radial-node timbre" style="--fdur:3.8s; --fdelay:-2.2s" tabindex="0" role="link" aria-label="Jump to falsetto samples" data-target="tech-falsetto" data-tab="tab-anno-timbre">
-            <rect x="465.4" y="285.7" width="88.8" height="34" rx="17" stroke-width="1.25"/>
-            <text x="509.8" y="302.7">Falsetto</text>
-            <circle class="radial-dot" cx="459.4" cy="302.7" r="2.6" fill="var(--timbre)"/>
-          </g>
-          <g class="radial-node timbre" style="--fdur:4.4s; --fdelay:-0.2s" tabindex="0" role="link" aria-label="Jump to breathy samples" data-target="tech-breathy" data-tab="tab-anno-timbre">
-            <rect x="412.1" y="116.6" width="81.2" height="34" rx="17" stroke-width="1.25"/>
-            <text x="452.7" y="133.6">Breathy</text>
-            <circle class="radial-dot" cx="406.1" cy="133.6" r="2.6" fill="var(--timbre)"/>
-          </g>
-          <g class="radial-node timbre" style="--fdur:3.7s; --fdelay:-3.1s" tabindex="0" role="link" aria-label="Jump to belting samples" data-target="tech-belting" data-tab="tab-anno-timbre">
-            <rect x="412.1" y="369.4" width="81.2" height="34" rx="17" stroke-width="1.25"/>
-            <text x="452.7" y="386.4">Belting</text>
-            <circle class="radial-dot" cx="406.1" cy="386.4" r="2.6" fill="var(--timbre)"/>
-          </g>
-        </svg>
-        <div class="hero-legend">
-          <span class="legend-inline"><span class="dot pitch"></span>Pitch techniques</span>
-          <span class="legend-inline"><span class="dot timbre"></span>Timbre techniques</span>
-        </div>
-        <p class="hero-hint">Click a technique to jump to its samples.</p>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main id="main">
-<div class="wrap">
+  <main id="main">
+    <div class="wrap">
 
-  <!-- ============ ABSTRACT ============ -->
-  <section id="abstract">
-    <div class="section-head">
-      <span class="eyebrow">01 — Abstract</span>
-      <h2>Closing the gap between synthesis and human expressivity</h2>
-    </div>
-    <div class="abstract-card">
-      <p>The precise control of singing techniques is of utmost importance in achieving emotionally expressive vocal performances. To bridge the gap between current Singing Voice Synthesis (SVS) systems and human singers, our paper focuses on developing an SVS system that allows for control over singing techniques.</p>
-      <p>We introduce <strong>SinTechSVS</strong>, a singing technique controllable SVS system composed of a singing technique annotator, a singing technique controllable synthesizer, and a singing technique recommender. Our approach leverages transfer learning for efficient singing technique annotation and adapts the DiffSinger framework with additional style encoders and an attention-based singing technique local score (STLS) module to enhance singing technique controllability. We also propose a Seq2Seq singing technique recommender for the new task of Singing Technique Recommendation (STR).</p>
-      <p>Experimental results demonstrate that SinTechSVS significantly improves the quality and expressiveness of synthesized vocal performances, with comparable general synthesis capabilities to state-of-the-art SVS systems and enhanced control over singing techniques, as evidenced by objective and subjective evaluations. To the best of our knowledge, SinTechSVS is the first SVS capable of controlling singing techniques.</p>
-    </div>
-  </section>
-
-
-  <!-- ============ ARCHITECTURE ============ -->
-  <section id="architecture">
-    <div class="section-head">
-      <span class="eyebrow">02 — System</span>
-      <h2>Overall architecture</h2>
-      <p class="lede">SinTechSVS consists of three key components: a singing technique annotator (STA), a singing voice synthesizer conditioned on singing techniques (SVS), and a singing technique recommender (STR). The "OR" symbol denotes that the SVS input is either a user-specified technique sequence or the predicted sequence from the STR.</p>
-    </div>
-    <figure class="figure">
-      <img src="assets/img/overall-architecture.png" alt="Overall architecture diagram of SinTechSVS showing the singing technique annotator, the technique-conditioned synthesizer, and the technique recommender." loading="lazy">
-    </figure>
-
-    <figure class="figure" style="margin-top:40px;">
-      <img src="assets/img/training-inference.png" alt="Training and inference pipeline diagram for SinTechSVS across three stages." loading="lazy">
-      <figcaption>The training process consists of three steps, each laying the foundation for the next. Modules with full shadows remain unfixed during the step; modules with half shadows are first fixed, then unfixed. <em>(Top-left)</em> Training of STA. <em>(Bottom-left)</em> Training of SVS. <em>(Bottom-right)</em> Inference of SinTechSVS.</figcaption>
-    </figure>
-  </section>
-
-
-  <!-- ============ ANNOTATIONS ============ -->
-  <section id="annotations">
-    <div class="section-head">
-      <span class="eyebrow">03 — Ground Truth</span>
-      <h2>Singing technique annotations</h2>
-      <p class="lede">Samples of singing techniques manually annotated on the Opencpop dataset. In sentence-level samples, <b>bolded</b> syllables are sung in the specified technique.</p>
-    </div>
-
-    <div class="tabbar" role="tablist" aria-label="Annotation technique category">
-      <button class="tab-btn pitch" role="tab" aria-selected="true" aria-controls="anno-pitch" id="tab-anno-pitch">Pitch Techniques</button>
-      <button class="tab-btn timbre" role="tab" aria-selected="false" aria-controls="anno-timbre" id="tab-anno-timbre">Timbre Techniques</button>
-    </div>
-
-    <div class="tab-panel active" id="anno-pitch" role="tabpanel" aria-labelledby="tab-anno-pitch">
-
-      <div class="tech-card pitch" id="tech-scooping">
-        <div class="tech-card-head">
-          <span class="tech-name">Scooping</span>
-          <span class="tech-desc">approaching the target pitch from below</span>
+      <!-- ============ ABSTRACT ============ -->
+      <section id="abstract">
+        <div class="section-head">
+          <span class="eyebrow">01 — Abstract</span>
+          <h2>Closing the gap between synthesis and human expressivity</h2>
         </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line"><b>具(<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:inherit;">ju</span>)</b> 象(<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);">xiang</span>)</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-sentence.wav" type="audio/wav"></audio>
-          </div>
+        <div class="abstract-card">
+          <p>The precise control of singing techniques is of utmost importance in achieving emotionally expressive vocal
+            performances. To bridge the gap between current Singing Voice Synthesis (SVS) systems and human singers, our
+            paper focuses on developing an SVS system that allows for control over singing techniques.</p>
+          <p>We introduce <strong>SinTechSVS</strong>, a singing technique controllable SVS system composed of a singing
+            technique annotator, a singing technique controllable synthesizer, and a singing technique recommender. Our
+            approach leverages transfer learning for efficient singing technique annotation and adapts the DiffSinger
+            framework with additional style encoders and an attention-based singing technique local score (STLS) module
+            to enhance singing technique controllability. We also propose a Seq2Seq singing technique recommender for
+            the new task of Singing Technique Recommendation (STR).</p>
+          <p>Experimental results demonstrate that SinTechSVS significantly improves the quality and expressiveness of
+            synthesized vocal performances, with comparable general synthesis capabilities to state-of-the-art SVS
+            systems and enhanced control over singing techniques, as evidenced by objective and subjective evaluations.
+            To the best of our knowledge, SinTechSVS is the first SVS capable of controlling singing techniques.</p>
         </div>
-      </div>
+      </section>
 
-      <div class="tech-card pitch" id="tech-bend">
-        <div class="tech-card-head">
-          <span class="tech-name">Bend</span>
-          <span class="tech-desc">pitch deviates and returns within a note</span>
+
+      <!-- ============ ARCHITECTURE ============ -->
+      <section id="architecture">
+        <div class="section-head">
+          <span class="eyebrow">02 — System</span>
+          <h2>Overall architecture</h2>
+          <p class="lede">SinTechSVS consists of three key components: a singing technique annotator (STA), a singing
+            voice synthesizer conditioned on singing techniques (SVS), and a singing technique recommender (STR). The
+            "OR" symbol denotes that the SVS input is either a user-specified technique sequence or the predicted
+            sequence from the STR.</p>
         </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line">没(mei) 限(xian) <b>期(qi)</b></div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-sentence.wav" type="audio/wav"></audio>
-          </div>
+        <figure class="figure">
+          <img src="assets/img/overall-architecture.png"
+            alt="Overall architecture diagram of SinTechSVS showing the singing technique annotator, the technique-conditioned synthesizer, and the technique recommender."
+            loading="lazy">
+        </figure>
+
+        <figure class="figure" style="margin-top:40px;">
+          <img src="assets/img/training-inference.png"
+            alt="Training and inference pipeline diagram for SinTechSVS across three stages." loading="lazy">
+          <figcaption>The training process consists of three steps, each laying the foundation for the next. Modules
+            with full shadows remain unfixed during the step; modules with half shadows are first fixed, then unfixed.
+            <em>(Top-left)</em> Training of STA. <em>(Bottom-left)</em> Training of SVS. <em>(Bottom-right)</em>
+            Inference of SinTechSVS.</figcaption>
+        </figure>
+      </section>
+
+
+      <!-- ============ ANNOTATIONS ============ -->
+      <section id="annotations">
+        <div class="section-head">
+          <span class="eyebrow">03 — Ground Truth</span>
+          <h2>Singing technique annotations</h2>
+          <p class="lede">Samples of singing techniques manually annotated on the Opencpop dataset. In sentence-level
+            samples, <b>bolded</b> syllables are sung in the specified technique.</p>
         </div>
-      </div>
 
-      <div class="tech-card pitch" id="tech-drop">
-        <div class="tech-card-head">
-          <span class="tech-name">Drop</span>
-          <span class="tech-desc">pitch falls away at the end of a note</span>
+        <div class="tabbar" role="tablist" aria-label="Annotation technique category">
+          <button class="tab-btn pitch" role="tab" aria-selected="true" aria-controls="anno-pitch"
+            id="tab-anno-pitch">Pitch Techniques</button>
+          <button class="tab-btn timbre" role="tab" aria-selected="false" aria-controls="anno-timbre"
+            id="tab-anno-timbre">Timbre Techniques</button>
         </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-word-1.wav" type="audio/wav"></audio>
+
+        <div class="tab-panel active" id="anno-pitch" role="tabpanel" aria-labelledby="tab-anno-pitch">
+
+          <div class="tech-card pitch" id="tech-scooping">
+            <div class="tech-card-head">
+              <span class="tech-name">Scooping</span>
+              <span class="tech-desc">approaching the target pitch from below</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/scooping-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/scooping-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line"><b>具(<span
+                      style="font-family:'JetBrains Mono',monospace;font-size:12px;color:inherit;">ju</span>)</b>
+                  象(<span
+                    style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);">xiang</span>)
+                </div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/scooping-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
           </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-word-2.wav" type="audio/wav"></audio>
+
+          <div class="tech-card pitch" id="tech-bend">
+            <div class="tech-card-head">
+              <span class="tech-name">Bend</span>
+              <span class="tech-desc">pitch deviates and returns within a note</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/bend-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/bend-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line">没(mei) 限(xian) <b>期(qi)</b></div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/bend-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
           </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line">再(zai) <b>给(gei)</b> 我(wo) 两(liang) 分(fen) 钟(zhong)</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-sentence.wav" type="audio/wav"></audio>
+
+          <div class="tech-card pitch" id="tech-drop">
+            <div class="tech-card-head">
+              <span class="tech-name">Drop</span>
+              <span class="tech-desc">pitch falls away at the end of a note</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/drop-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/drop-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line">再(zai) <b>给(gei)</b> 我(wo) 两(liang) 分(fen) 钟(zhong)</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/drop-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
           </div>
+
+          <div class="tech-card pitch" id="tech-melisma">
+            <div class="tech-card-head">
+              <span class="tech-name">Melisma</span>
+              <span class="tech-desc">multiple pitches sung across one syllable</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/melisma-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/melisma-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line"><b>双(shuang)</b> 眼(yan)</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/pitch/melisma-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
 
-      <div class="tech-card pitch" id="tech-melisma">
-        <div class="tech-card-head">
-          <span class="tech-name">Melisma</span>
-          <span class="tech-desc">multiple pitches sung across one syllable</span>
+        <div class="tab-panel" id="anno-timbre" role="tabpanel" aria-labelledby="tab-anno-timbre">
+
+          <div class="tech-card timbre" id="tech-vocalfry">
+            <div class="tech-card-head">
+              <span class="tech-name">Vocal Fry</span>
+              <span class="tech-desc">low, creaky glottal vibration</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/vocal-fry-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/vocal-fry-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line"><b>我(wo)</b> 们(men) 都(dou) 需(xu) 要(yao) 勇(yong) 气(qi)</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/vocal-fry-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card timbre" id="tech-falsetto">
+            <div class="tech-card-head">
+              <span class="tech-name">Falsetto</span>
+              <span class="tech-desc">light, breathy upper-register voice</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/falsetto-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/falsetto-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line">没(mei) <b>有(wo) 你(you) 根(gen) 本(ben)</b> 不(bu) 想(xiang) 逃(tao)</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/falsetto-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card timbre" id="tech-breathy">
+            <div class="tech-card-head">
+              <span class="tech-name">Breathy</span>
+              <span class="tech-desc">audible airflow blended into the tone</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/breathy-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/breathy-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line">我(wo) <b>不(bu) 会(hui) 发(fa) 现(xian) 我(wo) 难(nan) 受(shou)</b></div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/breathy-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-card timbre" id="tech-belting">
+            <div class="tech-card-head">
+              <span class="tech-name">Belting</span>
+              <span class="tech-desc">powerful chest-register projection</span>
+            </div>
+            <div class="sample-row">
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 1</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/belting-word-1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Word-level Sample 2</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/belting-word-2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label">Sentence-level Sample</div>
+                <div class="lyric-line"><b>一(yi) 辈(bei) 子(zi) 暖(nuan) 暖(nuan) 的(de) 好(hao)</b></div>
+                <audio controls preload="none">
+                  <source src="assets/audio/annotations/timbre/belting-sentence.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line"><b>双(shuang)</b> 眼(yan)</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-sentence.wav" type="audio/wav"></audio>
-          </div>
+      </section>
+
+
+      <!-- ============ DATA ACQUIREMENT + STATS ============ -->
+      <section id="data">
+        <div class="section-head">
+          <span class="eyebrow">04 — Resources</span>
+          <h2>Data acquirement and annotation statistics</h2>
         </div>
-      </div>
 
-    </div>
-
-    <div class="tab-panel" id="anno-timbre" role="tabpanel" aria-labelledby="tab-anno-timbre">
-
-      <div class="tech-card timbre" id="tech-vocalfry">
-        <div class="tech-card-head">
-          <span class="tech-name">Vocal Fry</span>
-          <span class="tech-desc">low, creaky glottal vibration</span>
-        </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-word-1.wav" type="audio/wav"></audio>
+        <div class="access-card">
+          <div>
+            <h3>Download the annotation file</h3>
+            <p>The manual singing technique annotation file for the Opencpop dataset is available for direct download
+              from the <a
+                href="https://huggingface.co/datasets/Chanson-0803/SinTechSVS-singing-technique-annotation">SinTechSVS
+                annotation dataset</a> on Hugging Face. The annotation is for research purposes only.</p>
+            <p>For the Opencpop dataset itself, please strictly follow the instructions at <a
+                href="https://wenet.org.cn/opencpop/">wenet.org.cn/opencpop</a> — we have no right to grant access to it
+              directly.</p>
           </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line"><b>我(wo)</b> 们(men) 都(dou) 需(xu) 要(yao) 勇(yong) 气(qi)</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-sentence.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-card timbre" id="tech-falsetto">
-        <div class="tech-card-head">
-          <span class="tech-name">Falsetto</span>
-          <span class="tech-desc">light, breathy upper-register voice</span>
-        </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line">没(mei) <b>有(wo) 你(you) 根(gen) 本(ben)</b> 不(bu) 想(xiang) 逃(tao)</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-sentence.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-card timbre" id="tech-breathy">
-        <div class="tech-card-head">
-          <span class="tech-name">Breathy</span>
-          <span class="tech-desc">audible airflow blended into the tone</span>
-        </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line">我(wo) <b>不(bu) 会(hui) 发(fa) 现(xian) 我(wo) 难(nan) 受(shou)</b></div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-sentence.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-card timbre" id="tech-belting">
-        <div class="tech-card-head">
-          <span class="tech-name">Belting</span>
-          <span class="tech-desc">powerful chest-register projection</span>
-        </div>
-        <div class="sample-row">
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-word-1.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-word-2.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label">Sentence-level Sample</div>
-            <div class="lyric-line"><b>一(yi) 辈(bei) 子(zi) 暖(nuan) 暖(nuan) 的(de) 好(hao)</b></div>
-            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-sentence.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============ DATA ACQUIREMENT + STATS ============ -->
-  <section id="data">
-    <div class="section-head">
-      <span class="eyebrow">04 — Resources</span>
-      <h2>Data acquirement and annotation statistics</h2>
-    </div>
-
-    <div class="access-card">
-      <div>
-        <h3>Download the annotation file</h3>
-        <p>The manual singing technique annotation file for the Opencpop dataset is available for direct download from the <a href="https://huggingface.co/datasets/Chanson-0803/SinTechSVS-singing-technique-annotation">SinTechSVS annotation dataset</a> on Hugging Face. The annotation is for research purposes only.</p>
-        <p>For the Opencpop dataset itself, please strictly follow the instructions at <a href="https://wenet.org.cn/opencpop/">wenet.org.cn/opencpop</a> — we have no right to grant access to it directly.</p>
-      </div>
-      <div>
-        <h3 style="margin-bottom:10px;">Usage requires</h3>
-        <ul class="req-list">
-          <li>Research purposes only</li>
-          <li>Agreement to the <a href="#license">license</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="stats-grid" style="margin-top:36px;">
-      <div class="stat-card">
-        <h3>Distribution of manually annotated Opencpop labels</h3>
-        <img src="assets/img/annotation-distribution.png" alt="Bar chart showing the distribution of manually annotated singing technique labels in the Opencpop dataset." loading="lazy">
-        <p class="prose" style="margin-top:12px; font-size:13px;">"Whisper" and "hiccup" are removed due to the small amount of available labels.</p>
-      </div>
-      <div class="stat-card">
-        <h3>Distribution of duration per technique</h3>
-        <img src="assets/img/technique-duration-distribution.png" alt="Violin plot showing the duration distribution of each singing technique." loading="lazy">
-        <h3 style="margin-top:28px;">The mel-spectrograms of the timbral and pitch singing techniques</h3>
-        <img src="assets/img/technique-mel-spectrograms.png" alt="Mel-spectrograms of timbral and pitch singing techniques." loading="lazy">
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============ CONTROL SAMPLES ============ -->
-  <section id="control-samples">
-    <div class="section-head">
-      <span class="eyebrow">05 — Results</span>
-      <h2>Synthesis with singing technique control</h2>
-      <p class="lede">Synthesized samples conditioned on singing techniques. In the word-level lyric sequence, <b>bolded</b> syllables are sung in the specified technique. <strong>Regular / Straight</strong> denotes synthesis without any technique conditioning, serving as a reference for comparison.</p>
-    </div>
-
-    <div class="tabbar" role="tablist" aria-label="Control sample technique category">
-      <button class="tab-btn pitch" role="tab" aria-selected="true" aria-controls="ctrl-pitch" id="tab-ctrl-pitch">Pitch Techniques</button>
-      <button class="tab-btn timbre" role="tab" aria-selected="false" aria-controls="ctrl-timbre" id="tab-ctrl-timbre">Timbre Techniques</button>
-    </div>
-
-    <div class="tab-panel active" id="ctrl-pitch" role="tabpanel" aria-labelledby="tab-ctrl-pitch">
-
-      <div class="compare-card">
-        <div class="compare-meta pitch">
-          <span class="tech-name">Scooping</span>
-          <div class="lyric-line">冰 刀 <b>划</b> 的 圈 <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">bing dao <b>hua</b> de quan</span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/scooping-regular.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/scooping-sintechsvs.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-meta pitch">
-          <span class="tech-name">Bend</span>
-          <div class="lyric-line">又 无 可 <b>奈</b> 何 <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">you wu ke <b>nai</b> he</span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/bend-regular.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/bend-sintechsvs.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-meta pitch">
-          <span class="tech-name">Drop</span>
-          <div class="lyric-line">小 火 车 摆 <b>动</b> 的 旋 律 <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">xiao huo che bai <b>dong</b> de xuan lv</span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/drop-regular.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/drop-sintechsvs.wav" type="audio/wav"></audio>
+          <div>
+            <h3 style="margin-bottom:10px;">Usage requires</h3>
+            <ul class="req-list">
+              <li>Research purposes only</li>
+              <li>Agreement to the <a href="#license">license</a></li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      <div class="compare-card">
-        <div class="compare-meta pitch">
-          <span class="tech-name">Melisma</span>
-          <div class="lyric-line">你 在 世 俗 里 的 名 字 被 人 用 <b>了</b> <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">ni zai shi su li de ming zi bei ren yong <b>le</b></span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/melisma-regular.wav" type="audio/wav"></audio>
+        <div class="stats-grid" style="margin-top:36px;">
+          <div class="stat-card">
+            <h3>Distribution of manually annotated Opencpop labels</h3>
+            <img src="assets/img/annotation-distribution.png"
+              alt="Bar chart showing the distribution of manually annotated singing technique labels in the Opencpop dataset."
+              loading="lazy">
+            <p class="prose" style="margin-top:12px; font-size:13px;">"Whisper" and "hiccup" are removed due to the
+              small amount of available labels.</p>
           </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/pitch/melisma-sintechsvs.wav" type="audio/wav"></audio>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="tab-panel" id="ctrl-timbre" role="tabpanel" aria-labelledby="tab-ctrl-timbre">
-
-      <div class="compare-card">
-        <div class="compare-meta timbre">
-          <span class="tech-name">Vocal Fry</span>
-          <div class="lyric-line"><b>喔 喔</b> <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>wo wo</b></span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/vocal-fry-regular.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/vocal-fry-sintechsvs.wav" type="audio/wav"></audio>
+          <div class="stat-card">
+            <h3>Distribution of duration per technique</h3>
+            <img src="assets/img/technique-duration-distribution.png"
+              alt="Violin plot showing the duration distribution of each singing technique." loading="lazy">
+            <h3 style="margin-top:28px;">Mel-spectrograms of the timbre and pitch singing techniques</h3>
+            <img src="assets/img/technique-mel-spectrograms.png"
+              alt="Mel-spectrograms of timbral and pitch singing techniques." loading="lazy">
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="compare-card">
-        <div class="compare-meta timbre">
-          <span class="tech-name">Falsetto</span>
-          <div class="lyric-line"><b>我 恨 你</b> <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>wo hen ni</b></span></div>
+
+      <!-- ============ CONTROL SAMPLES ============ -->
+      <section id="control-samples">
+        <div class="section-head">
+          <span class="eyebrow">05 — Results</span>
+          <h2>Synthesis with singing technique control</h2>
+          <p class="lede">Synthesized samples conditioned on singing techniques. In the word-level lyric sequence,
+            <b>bolded</b> syllables are sung in the specified technique. <strong>Regular / Straight</strong> denotes
+            synthesis without any technique conditioning, serving as a reference for comparison.</p>
         </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/falsetto-regular.wav" type="audio/wav"></audio>
+
+        <div class="tabbar" role="tablist" aria-label="Control sample technique category">
+          <button class="tab-btn pitch" role="tab" aria-selected="true" aria-controls="ctrl-pitch"
+            id="tab-ctrl-pitch">Pitch Techniques</button>
+          <button class="tab-btn timbre" role="tab" aria-selected="false" aria-controls="ctrl-timbre"
+            id="tab-ctrl-timbre">Timbre Techniques</button>
+        </div>
+
+        <div class="tab-panel active" id="ctrl-pitch" role="tabpanel" aria-labelledby="tab-ctrl-pitch">
+
+          <div class="compare-card">
+            <div class="compare-meta pitch">
+              <span class="tech-name">Scooping</span>
+              <div class="lyric-line">冰 刀 <b>划</b> 的 圈 <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">bing dao
+                  <b>hua</b> de quan</span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/scooping-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/scooping-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
           </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/falsetto-sintechsvs.wav" type="audio/wav"></audio>
+
+          <div class="compare-card">
+            <div class="compare-meta pitch">
+              <span class="tech-name">Bend</span>
+              <div class="lyric-line">又 无 可 <b>奈</b> 何 <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">you wu ke
+                  <b>nai</b> he</span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/bend-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/bend-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-meta pitch">
+              <span class="tech-name">Drop</span>
+              <div class="lyric-line">小 火 车 摆 <b>动</b> 的 旋 律 <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">xiao huo che
+                  bai <b>dong</b> de xuan lv</span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/drop-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/drop-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-meta pitch">
+              <span class="tech-name">Melisma</span>
+              <div class="lyric-line">你 在 世 俗 里 的 名 字 被 人 用 <b>了</b> <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);">ni zai shi su
+                  li de ming zi bei ren yong <b>le</b></span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/melisma-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/pitch/melisma-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab-panel" id="ctrl-timbre" role="tabpanel" aria-labelledby="tab-ctrl-timbre">
+
+          <div class="compare-card">
+            <div class="compare-meta timbre">
+              <span class="tech-name">Vocal Fry</span>
+              <div class="lyric-line"><b>喔 喔</b> <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>wo
+                    wo</b></span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/vocal-fry-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/vocal-fry-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-meta timbre">
+              <span class="tech-name">Falsetto</span>
+              <div class="lyric-line"><b>我 恨 你</b> <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>wo hen
+                    ni</b></span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/falsetto-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/falsetto-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-meta timbre">
+              <span class="tech-name">Breathy</span>
+              <div class="lyric-line"><b>很 少 人 看 诗</b> <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>hen shao
+                    ren kan shi</b></span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/breathy-regular.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/breathy-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-card">
+            <div class="compare-meta timbre">
+              <span class="tech-name">Belting</span>
+              <div class="lyric-line"><b>你 好 吗</b> <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>ni hao
+                    ma</b></span></div>
+            </div>
+            <div class="compare-pair">
+              <div class="sample-cell">
+                <div class="sample-label">Regular / Straight</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/belting-regular.wav" type="audio/mpeg">
+                </audio>
+              </div>
+              <div class="sample-cell">
+                <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
+                <audio controls preload="none">
+                  <source src="assets/audio/control/timbre/belting-sintechsvs.wav" type="audio/wav">
+                </audio>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ============ RECOMMENDATION ============ -->
+      <section id="recommendation">
+        <div class="section-head">
+          <span class="eyebrow">06 — Results</span>
+          <h2>Synthesis with singing technique recommendation</h2>
+          <p class="lede">Synthesized samples conditioned on singing techniques recommended directly from the music
+            score. <strong>STan</strong> denotes SinTechSVS using annotated (ground-truth) technique labels;
+            <strong>SinTechSVS</strong> uses the STR module to predict techniques for the input.</p>
+        </div>
+
+        <div class="trio-head">
+          <span class="sample-label">Ground Truth</span>
+          <span class="sample-label">STan</span>
+          <span class="sample-label">SinTechSVS</span>
+        </div>
+
+        <div class="compare-card" style="grid-template-columns:1fr;">
+          <div class="compare-trio">
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/gt/2099003684.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/stan/2099003684.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/sintechsvs/2099003684.wav" type="audio/wav">
+              </audio></div>
           </div>
         </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-meta timbre">
-          <span class="tech-name">Breathy</span>
-          <div class="lyric-line"><b>很 少 人 看 诗</b> <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>hen shao ren kan shi</b></span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/breathy-regular.wav" type="audio/wav"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/breathy-sintechsvs.wav" type="audio/wav"></audio>
+        <div class="compare-card" style="grid-template-columns:1fr;">
+          <div class="compare-trio">
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/gt/2086003182.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/stan/2086003182.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/sintechsvs/2086003182.wav" type="audio/wav">
+              </audio></div>
           </div>
         </div>
-      </div>
-
-      <div class="compare-card">
-        <div class="compare-meta timbre">
-          <span class="tech-name">Belting</span>
-          <div class="lyric-line"><b>你 好 吗</b> <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);"><b>ni hao ma</b></span></div>
-        </div>
-        <div class="compare-pair">
-          <div class="sample-cell">
-            <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/belting-regular.wav" type="audio/mpeg"></audio>
-          </div>
-          <div class="sample-cell">
-            <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="assets/audio/control/timbre/belting-sintechsvs.wav" type="audio/wav"></audio>
+        <div class="compare-card" style="grid-template-columns:1fr;">
+          <div class="compare-trio">
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/gt/2081002987.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/stan/2081002987.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/sintechsvs/2081002987.wav" type="audio/wav">
+              </audio></div>
           </div>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============ RECOMMENDATION ============ -->
-  <section id="recommendation">
-    <div class="section-head">
-      <span class="eyebrow">06 — Results</span>
-      <h2>Synthesis with singing technique recommendation</h2>
-      <p class="lede">Synthesized samples conditioned on singing techniques recommended directly from the music score. <strong>STan</strong> denotes SinTechSVS using annotated (ground-truth) technique labels; <strong>SinTechSVS</strong> uses the STR module to predict techniques for the input.</p>
-    </div>
-
-    <div class="trio-head">
-      <span class="sample-label">Ground Truth</span>
-      <span class="sample-label">STan</span>
-      <span class="sample-label">SinTechSVS</span>
-    </div>
-
-    <div class="compare-card" style="grid-template-columns:1fr;">
-      <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2099003684.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2099003684.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2099003684.wav" type="audio/wav"></audio></div>
-      </div>
-    </div>
-    <div class="compare-card" style="grid-template-columns:1fr;">
-      <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2086003182.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2086003182.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2086003182.wav" type="audio/wav"></audio></div>
-      </div>
-    </div>
-    <div class="compare-card" style="grid-template-columns:1fr;">
-      <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2081002987.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2081002987.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2081002987.wav" type="audio/wav"></audio></div>
-      </div>
-    </div>
-    <div class="compare-card" style="grid-template-columns:1fr;">
-      <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2072002678.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2072002678.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2072002678.wav" type="audio/wav"></audio></div>
-      </div>
-    </div>
-    <div class="compare-card" style="grid-template-columns:1fr;">
-      <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2046001741.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2046001741.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2046001741.wav" type="audio/wav"></audio></div>
-      </div>
-    </div>
-  </section>
+        <div class="compare-card" style="grid-template-columns:1fr;">
+          <div class="compare-trio">
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/gt/2072002678.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/stan/2072002678.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/sintechsvs/2072002678.wav" type="audio/wav">
+              </audio></div>
+          </div>
+        </div>
+        <div class="compare-card" style="grid-template-columns:1fr;">
+          <div class="compare-trio">
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/gt/2046001741.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/stan/2046001741.wav" type="audio/wav">
+              </audio></div>
+            <div class="sample-cell"><audio controls preload="none">
+                <source src="assets/audio/recommendation/sintechsvs/2046001741.wav" type="audio/wav">
+              </audio></div>
+          </div>
+        </div>
+      </section>
 
 
-  <!-- ============ UNSEEN SAMPLES ============ -->
-  <section id="unseen">
-    <div class="section-head">
-      <span class="eyebrow">07 — Results</span>
-      <h2>Recommendation on unseen music scores</h2>
-      <p class="lede">Technique recommendations and corresponding synthesis on previously unseen score samples. Pitch abbreviations: <span class="seq-val"><span class="tag">STR</span> straight · <span class="tag">SCO</span> scooping · <span class="tag">BEND</span> bend · <span class="tag">DROP</span> drop · <span class="tag">MEL</span> melisma</span>. Timbre abbreviations: <span class="seq-val"><span class="tag">REG</span> regular · <span class="tag">FRY</span> vocal fry · <span class="tag">FAL</span> falsetto · <span class="tag">BRE</span> breathy · <span class="tag">BEL</span> belting</span>. Word-level pitch, lyric, slur, and technique sequences are separated by "|".</p>
-    </div>
+      <!-- ============ UNSEEN SAMPLES ============ -->
+      <section id="unseen">
+        <div class="section-head">
+          <span class="eyebrow">07 — Results</span>
+          <h2>Recommendation on unseen music scores</h2>
+          <p class="lede">Technique recommendations and corresponding synthesis on previously unseen score samples.
+            Pitch abbreviations: <span class="seq-val"><span class="tag">STR</span> straight · <span
+                class="tag">SCO</span> scooping · <span class="tag">BEND</span> bend · <span class="tag">DROP</span>
+              drop · <span class="tag">MEL</span> melisma</span>. Timbre abbreviations: <span class="seq-val"><span
+                class="tag">REG</span> regular · <span class="tag">FRY</span> vocal fry · <span class="tag">FAL</span>
+              falsetto · <span class="tag">BRE</span> breathy · <span class="tag">BEL</span> belting</span>. Word-level
+            pitch, lyric, slur, and technique sequences are separated by "|".</p>
+        </div>
 
-    <div class="unseen-card">
-      <h4>Unseen Sample 1</h4>
-      <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">但(dan) | 我(wo) | 早(zao) | 已(yi) | 学(xue) | 会(hui) | 一(yi) | 个(ge) | 人(ren) | 想(xiang) | 你(ni)</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">A3 | F#4/Gb4 E4 D4 | F#4/Gb4 | B4 | C#5/Db5 | B4 | A4 | F#4/Gb4 | E4 | D4 | F#4/Gb4 E4 D4</span></div>
-      <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span class="tag active">STR</span><span class="tag active">MEL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">SCO</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">DROP</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">MEL</span></span></div>
-      <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag">REG</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag">REG</span><span class="tag active">BRE</span></span></div>
-      <div class="unseen-audio">
-        <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-1.wav" type="audio/wav"></audio>
-      </div>
-    </div>
+        <div class="unseen-card">
+          <h4>Unseen Sample 1</h4>
+          <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">但(dan) | 我(wo) | 早(zao) |
+              已(yi) | 学(xue) | 会(hui) | 一(yi) | 个(ge) | 人(ren) | 想(xiang) | 你(ni)</span></div>
+          <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">A3 | F#4/Gb4 E4 D4 | F#4/Gb4 |
+              B4 | C#5/Db5 | B4 | A4 | F#4/Gb4 | E4 | D4 | F#4/Gb4 E4 D4</span></div>
+          <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+              0 | 0 | 1 | 0 | 0 | 0 | 1</span></div>
+          <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span
+                class="tag active">STR</span><span class="tag active">MEL</span><span class="tag">REG</span><span
+                class="tag">REG</span><span class="tag active">SCO</span><span class="tag">REG</span><span
+                class="tag">REG</span><span class="tag active">DROP</span><span class="tag">REG</span><span
+                class="tag">REG</span><span class="tag active">MEL</span></span></div>
+          <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span
+                class="tag">REG</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span
+                class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span
+                class="tag active">FAL</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span
+                class="tag">REG</span><span class="tag active">BRE</span></span></div>
+          <div class="unseen-audio">
+            <div class="sample-label">Synthesized Audio</div>
+            <audio controls preload="none">
+              <source src="assets/audio/unseen/unseen-sample-1.wav" type="audio/wav">
+            </audio>
+          </div>
+        </div>
 
-    <div class="unseen-card">
-      <h4>Unseen Sample 2</h4>
-      <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">看(kan) | 着(zhe) | 我(wo) | 的(de) | 脚(jiao) | 印(yin) | 一(yi) | 个(ge) | 人(ren) | 一(yi) | 步(bu) | 步(bu) | 好(hao) | 寂(ji) | 寞(mo)</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">F4 | G4 | E4 | D4 | C4 | D4 C4 A4 | E4 | F4 | C5 | E4 | F4 | C5 | E4 | F4 | F4</span></div>
-      <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span class="tag active">STR</span><span class="tag">REG</span><span class="tag active">MEL</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span></span></div>
-      <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">BEL</span></span></div>
-      <div class="unseen-audio">
-        <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-2.wav" type="audio/wav"></audio>
-      </div>
-    </div>
+        <div class="unseen-card">
+          <h4>Unseen Sample 2</h4>
+          <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">看(kan) | 着(zhe) | 我(wo) |
+              的(de) | 脚(jiao) | 印(yin) | 一(yi) | 个(ge) | 人(ren) | 一(yi) | 步(bu) | 步(bu) | 好(hao) | 寂(ji) | 寞(mo)</span>
+          </div>
+          <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">F4 | G4 | E4 | D4 | C4 | D4 C4
+              A4 | E4 | F4 | C5 | E4 | F4 | C5 | E4 | F4 | F4</span></div>
+          <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+              0 | 0 | 1 | 0 | 0 | 0 | 1</span></div>
+          <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span
+                class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span
+                class="tag active">STR</span><span class="tag">REG</span><span class="tag active">MEL</span><span
+                class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span
+                class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span
+                class="tag active">STR</span><span class="tag active">STR</span><span
+                class="tag active">SCO</span></span></div>
+          <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span
+                class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span
+                class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag">REG</span><span
+                class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span
+                class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span
+                class="tag">REG</span><span class="tag">REG</span><span class="tag active">BEL</span></span></div>
+          <div class="unseen-audio">
+            <div class="sample-label">Synthesized Audio</div>
+            <audio controls preload="none">
+              <source src="assets/audio/unseen/unseen-sample-2.wav" type="audio/wav">
+            </audio>
+          </div>
+        </div>
 
-    <div class="unseen-card">
-      <h4>Unseen Sample 3</h4>
-      <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">有(you) | 什(shen) | 么(me) | 方(fang) | 法(fa) | 让(rang) | 自(zi) | 己(ji) | 真(zhen) | 的(de) | 忘(wang) | 记(ji) | ha | ha</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">G4 | A4 | A#4/Bb4 | A4 F4 | C4 | A#4/Bb4 | A4 | F4 | A#4/Bb4 | A4 | A#4/Bb4 | C5 | A#4/Bb4 A4 | A4 G4 F4</span></div>
-      <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 1</span></div>
-      <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span class="tag active">BEND</span><span class="tag active">BEND</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">BEND</span><span class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span class="tag active">DROP</span><span class="tag active">MEL</span></span></div>
-      <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag">REG</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">FAL</span><span class="tag active">BRE</span><span class="tag active">BRE</span></span></div>
-      <div class="unseen-audio">
-        <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-3.wav" type="audio/wav"></audio>
-      </div>
-    </div>
+        <div class="unseen-card">
+          <h4>Unseen Sample 3</h4>
+          <div class="seq-row"><span class="seq-label">Lyrics</span><span class="seq-val">有(you) | 什(shen) | 么(me) |
+              方(fang) | 法(fa) | 让(rang) | 自(zi) | 己(ji) | 真(zhen) | 的(de) | 忘(wang) | 记(ji) | ha | ha</span></div>
+          <div class="seq-row"><span class="seq-label">Pitch</span><span class="seq-val">G4 | A4 | A#4/Bb4 | A4 F4 | C4
+              | A#4/Bb4 | A4 | F4 | A#4/Bb4 | A4 | A#4/Bb4 | C5 | A#4/Bb4 A4 | A4 G4 F4</span></div>
+          <div class="seq-row"><span class="seq-label">Slur</span><span class="seq-val">0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+              0 | 0 | 0 | 1 | 0 | 1</span></div>
+          <div class="seq-row"><span class="seq-label">Pitch Tech.</span><span class="seq-val"><span
+                class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">SCO</span><span
+                class="tag active">BEND</span><span class="tag active">BEND</span><span
+                class="tag active">STR</span><span class="tag active">STR</span><span class="tag active">STR</span><span
+                class="tag active">BEND</span><span class="tag active">STR</span><span
+                class="tag active">STR</span><span class="tag active">SCO</span><span
+                class="tag active">DROP</span><span class="tag active">MEL</span></span></div>
+          <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span
+                class="tag">REG</span><span class="tag">REG</span><span class="tag">REG</span><span
+                class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">BEL</span><span
+                class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BRE</span><span
+                class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">FAL</span><span
+                class="tag active">BRE</span><span class="tag active">BRE</span></span></div>
+          <div class="unseen-audio">
+            <div class="sample-label">Synthesized Audio</div>
+            <audio controls preload="none">
+              <source src="assets/audio/unseen/unseen-sample-3.wav" type="audio/wav">
+            </audio>
+          </div>
+        </div>
 
-  </section>
+      </section>
 
 
-  <!-- ============ CITATION ============ -->
-  <section id="citation">
-    <div class="section-head">
-      <span class="eyebrow">08 — Reference</span>
-      <h2>Citation</h2>
-      <p class="lede">If you use SinTechSVS in your research, please cite the IEEE/ACM Transactions on Audio, Speech, and Language Processing journal paper.</p>
-    </div>
-    <div class="citation-block">
-      <button class="copy-btn" id="copyBibtex">Copy BibTeX</button>
-      <pre id="bibtexText" style="margin:0; white-space:pre-wrap;">@article{zhao2024sintechsvs,
+      <!-- ============ CITATION ============ -->
+      <section id="citation">
+        <div class="section-head">
+          <span class="eyebrow">08 — Reference</span>
+          <h2>Citation</h2>
+          <p class="lede">If you use SinTechSVS in your research, please cite the IEEE/ACM Transactions on Audio,
+            Speech, and Language Processing journal paper.</p>
+        </div>
+        <div class="citation-block">
+          <button class="copy-btn" id="copyBibtex">Copy BibTeX</button>
+          <pre id="bibtexText" style="margin:0; white-space:pre-wrap;">@article{zhao2024sintechsvs,
   title={Sintechsvs: A singing technique controllable singing voice synthesis system},
   author={Zhao, Junchuan and Chetwin, Low Qi Hong and Wang, Ye},
   journal={IEEE/ACM Transactions on Audio, Speech, and Language Processing},
@@ -1462,97 +2160,102 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
   year={2024},
   publisher={IEEE}
 }</pre>
+        </div>
+      </section>
+
+
+      <!-- ============ CONTACT + LICENSE ============ -->
+      <section id="license">
+        <div class="section-head">
+          <span class="eyebrow">09 — Terms</span>
+          <h2>Contact and license</h2>
+        </div>
+
+        <p class="prose">If you have any questions about the paper, please contact the first author Junchuan at <a
+            href="mailto:junchuan@comp.nus.edu.sg">junchuan@comp.nus.edu.sg</a>.</p>
+
+        <ul class="license-list">
+          <li>The singing technique annotation for Opencpop is available to download for non-commercial purposes under
+            the <a href="https://wenet.org.cn/opencpop/liscense/">Opencpop license</a>.</li>
+          <li>This annotation may not be sold, leased, published, or distributed to any third party without written
+            permission from the administrator.</li>
+          <li>The National University of Singapore is not responsible for errors in the annotation's content or any
+            damages resulting from its use. The administrator may update these conditions of use at any time.</li>
+        </ul>
+      </section>
+
     </div>
-  </section>
+  </main>
 
-
-  <!-- ============ CONTACT + LICENSE ============ -->
-  <section id="license">
-    <div class="section-head">
-      <span class="eyebrow">09 — Terms</span>
-      <h2>Contact and license</h2>
+  <footer>
+    <div class="wrap">
+      <span>SinTechSVS supplementary materials.</span>
+      <span>National University of Singapore — School of Computing</span>
     </div>
+  </footer>
 
-    <p class="prose">If you have any questions about the paper, please contact the first author Junchuan at <a href="mailto:junchuan@comp.nus.edu.sg">junchuan@comp.nus.edu.sg</a>.</p>
+  <script>
+    // Radial hero diagram: click or keyboard-activate a technique node to
+    // switch the relevant tab and scroll to its card, with a brief highlight.
+    document.querySelectorAll('.radial-node').forEach(function (node) {
+      function activate() {
+        var tabId = node.getAttribute('data-tab');
+        var targetId = node.getAttribute('data-target');
+        var tabBtn = tabId ? document.getElementById(tabId) : null;
+        if (tabBtn && tabBtn.getAttribute('aria-selected') !== 'true') {
+          tabBtn.click();
+        }
+        var target = targetId ? document.getElementById(targetId) : null;
+        if (target) {
+          window.requestAnimationFrame(function () {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('flash');
+            setTimeout(function () { target.classList.remove('flash'); }, 1400);
+          });
+        }
+      }
+      node.addEventListener('click', activate);
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate();
+        }
+      });
+    });
 
-    <ul class="license-list">
-      <li>The singing technique annotation for Opencpop is available to download for non-commercial purposes under the <a href="https://wenet.org.cn/opencpop/liscense/">Opencpop license</a>.</li>
-      <li>This annotation may not be sold, leased, published, or distributed to any third party without written permission from the administrator.</li>
-      <li>The National University of Singapore is not responsible for errors in the annotation's content or any damages resulting from its use. The administrator may update these conditions of use at any time.</li>
-    </ul>
-  </section>
+    // Tab switching, generic for any [role="tablist"] group
+    document.querySelectorAll('.tabbar').forEach(function (bar) {
+      var btns = bar.querySelectorAll('.tab-btn');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) {
+            b.setAttribute('aria-selected', 'false');
+            var panel = document.getElementById(b.getAttribute('aria-controls'));
+            if (panel) panel.classList.remove('active');
+          });
+          btn.setAttribute('aria-selected', 'true');
+          var activePanel = document.getElementById(btn.getAttribute('aria-controls'));
+          if (activePanel) activePanel.classList.add('active');
+        });
+      });
+    });
 
-</div>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>SinTechSVS supplementary materials.</span>
-    <span>National University of Singapore — School of Computing</span>
-  </div>
-</footer>
-
-<script>
-// Radial hero diagram: click or keyboard-activate a technique node to
-// switch the relevant tab and scroll to its card, with a brief highlight.
-document.querySelectorAll('.radial-node').forEach(function(node){
-  function activate(){
-    var tabId = node.getAttribute('data-tab');
-    var targetId = node.getAttribute('data-target');
-    var tabBtn = tabId ? document.getElementById(tabId) : null;
-    if(tabBtn && tabBtn.getAttribute('aria-selected') !== 'true'){
-      tabBtn.click();
-    }
-    var target = targetId ? document.getElementById(targetId) : null;
-    if(target){
-      window.requestAnimationFrame(function(){
-        target.scrollIntoView({behavior:'smooth', block:'center'});
-        target.classList.add('flash');
-        setTimeout(function(){ target.classList.remove('flash'); }, 1400);
+    // Copy BibTeX
+    var copyBtn = document.getElementById('copyBibtex');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var text = document.getElementById('bibtexText').innerText;
+        navigator.clipboard.writeText(text).then(function () {
+          var original = copyBtn.textContent;
+          copyBtn.textContent = 'Copied';
+          setTimeout(function () { copyBtn.textContent = original; }, 1600);
+        }).catch(function () {
+          copyBtn.textContent = 'Press Ctrl/Cmd+C';
+        });
       });
     }
-  }
-  node.addEventListener('click', activate);
-  node.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      activate();
-    }
-  });
-});
-
-// Tab switching, generic for any [role="tablist"] group
-document.querySelectorAll('.tabbar').forEach(function(bar){
-  var btns = bar.querySelectorAll('.tab-btn');
-  btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btns.forEach(function(b){
-        b.setAttribute('aria-selected','false');
-        var panel = document.getElementById(b.getAttribute('aria-controls'));
-        if(panel) panel.classList.remove('active');
-      });
-      btn.setAttribute('aria-selected','true');
-      var activePanel = document.getElementById(btn.getAttribute('aria-controls'));
-      if(activePanel) activePanel.classList.add('active');
-    });
-  });
-});
-
-// Copy BibTeX
-var copyBtn = document.getElementById('copyBibtex');
-if(copyBtn){
-  copyBtn.addEventListener('click', function(){
-    var text = document.getElementById('bibtexText').innerText;
-    navigator.clipboard.writeText(text).then(function(){
-      var original = copyBtn.textContent;
-      copyBtn.textContent = 'Copied';
-      setTimeout(function(){ copyBtn.textContent = original; }, 1600);
-    }).catch(function(){
-      copyBtn.textContent = 'Press Ctrl/Cmd+C';
-    });
-  });
-}
-</script>
+  </script>
 
 </body>
+
 </html>
