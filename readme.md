@@ -7,7 +7,7 @@ SinTechSVS is a singing voice synthesis system designed to control and recommend
 ## Contents
 
 - `index.html` - the complete static demo website.
-- `assets/img/` - architecture and dataset statistic figures.
+- `assets/img/` - architecture, dataset statistic, and mel-spectrogram figures.
 - `assets/audio/annotations/` - ground-truth singing technique annotation examples.
 - `assets/audio/control/` - regular-vs-technique-conditioned synthesis examples.
 - `assets/audio/recommendation/` - ground truth, STan, and SinTechSVS recommendation comparisons.
@@ -38,6 +38,7 @@ The page includes:
 - Singing technique recommendation samples
 - Unseen score recommendation examples
 - Dataset/resource links
+- Mel-spectrogram visualization of timbral and pitch singing techniques
 - BibTeX citation
 - License and contact information
 
@@ -50,6 +51,10 @@ Junchuan Zhao, Low Qi Hong Chetwin, Ye Wang
 IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2024
 
 DOI: [10.1109/TASLP.2024.3394769](https://doi.org/10.1109/TASLP.2024.3394769)
+
+PDF: [2024_SinTechSVS_IEEETrans.pdf](https://smcnus.comp.nus.edu.sg/archive/pdf/2024/2024_SinTechSVS_IEEETrans.pdf)
+
+Annotation data: [SinTechSVS singing technique annotation](https://huggingface.co/datasets/Chanson-0803/SinTechSVS-singing-technique-annotation)
 
 ## Citation
 
