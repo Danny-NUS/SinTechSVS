@@ -934,11 +934,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
       <p class="lede">SinTechSVS consists of three key components: a singing technique annotator (STA), a singing voice synthesizer conditioned on singing techniques (SVS), and a singing technique recommender (STR). The "OR" symbol denotes that the SVS input is either a user-specified technique sequence or the predicted sequence from the STR.</p>
     </div>
     <figure class="figure">
-      <img src="overall-1.png" alt="Overall architecture diagram of SinTechSVS showing the singing technique annotator, the technique-conditioned synthesizer, and the technique recommender." loading="lazy">
+      <img src="assets/img/overall-architecture.png" alt="Overall architecture diagram of SinTechSVS showing the singing technique annotator, the technique-conditioned synthesizer, and the technique recommender." loading="lazy">
     </figure>
 
     <figure class="figure" style="margin-top:40px;">
-      <img src="tr_inf.png" alt="Training and inference pipeline diagram for SinTechSVS across three stages." loading="lazy">
+      <img src="assets/img/training-inference.png" alt="Training and inference pipeline diagram for SinTechSVS across three stages." loading="lazy">
       <figcaption>The training process consists of three steps, each laying the foundation for the next. Modules with full shadows remain unfixed during the step; modules with half shadows are first fixed, then unfixed. <em>(Top-left)</em> Training of STA. <em>(Bottom-left)</em> Training of SVS. <em>(Bottom-right)</em> Inference of SinTechSVS.</figcaption>
     </figure>
   </section>
@@ -967,16 +967,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2002000053_7_scooping.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2001000020_11_scooping.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line"><b>具(<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:inherit;">ju</span>)</b> 象(<span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);">xiang</span>)</div>
-            <audio controls preload="none"><source src="2031001168_ju_scooping.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/scooping-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -989,16 +989,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2002000066_0_bend.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2002000066_11_bend.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line">没(mei) 限(xian) <b>期(qi)</b></div>
-            <audio controls preload="none"><source src="2042001596_qi_bend.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/bend-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1011,16 +1011,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2002000071_3_drop.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2007000218_6_drop.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line">再(zai) <b>给(gei)</b> 我(wo) 两(liang) 分(fen) 钟(zhong)</div>
-            <audio controls preload="none"><source src="2067002490_gei_drop.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/drop-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1033,16 +1033,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2057002127_3_melisma.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2010000384_4_melisma.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line"><b>双(shuang)</b> 眼(yan)</div>
-            <audio controls preload="none"><source src="2017000662_shuang_melisma.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/pitch/melisma-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1059,16 +1059,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2001000009_0_vf.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2004000113_2_vf.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line"><b>我(wo)</b> 们(men) 都(dou) 需(xu) 要(yao) 勇(yong) 气(qi)</div>
-            <audio controls preload="none"><source src="2028001094_wo_vf.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/vocal-fry-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1081,16 +1081,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2047001800_5_fal.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2047001802_6_fal.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line">没(mei) <b>有(wo) 你(you) 根(gen) 本(ben)</b> 不(bu) 想(xiang) 逃(tao)</div>
-            <audio controls preload="none"><source src="falsetto_gt.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/falsetto-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1103,16 +1103,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2050001901_5_breathy.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2053001995_0_breathy.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line">我(wo) <b>不(bu) 会(hui) 发(fa) 现(xian) 我(wo) 难(nan) 受(shou)</b></div>
-            <audio controls preload="none"><source src="2094003485_all_except_first_breathy.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/breathy-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1125,16 +1125,16 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="sample-row">
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 1</div>
-            <audio controls preload="none"><source src="2054002011_3_belting.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-word-1.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Word-level Sample 2</div>
-            <audio controls preload="none"><source src="2057002140_13_belting.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-word-2.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label">Sentence-level Sample</div>
             <div class="lyric-line"><b>一(yi) 辈(bei) 子(zi) 暖(nuan) 暖(nuan) 的(de) 好(hao)</b></div>
-            <audio controls preload="none"><source src="2093003482_all_belting.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/annotations/timbre/belting-sentence.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1168,12 +1168,12 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
     <div class="stats-grid" style="margin-top:36px;">
       <div class="stat-card">
         <h3>Distribution of manually annotated Opencpop labels</h3>
-        <img src="dataset.png" alt="Bar chart showing the distribution of manually annotated singing technique labels in the Opencpop dataset." loading="lazy">
+        <img src="assets/img/annotation-distribution.png" alt="Bar chart showing the distribution of manually annotated singing technique labels in the Opencpop dataset." loading="lazy">
         <p class="prose" style="margin-top:12px; font-size:13px;">"Whisper" and "hiccup" are removed due to the small amount of available labels.</p>
       </div>
       <div class="stat-card">
         <h3>Distribution of duration per technique</h3>
-        <img src="violin.png" alt="Violin plot showing the duration distribution of each singing technique." loading="lazy">
+        <img src="assets/img/technique-duration-distribution.png" alt="Violin plot showing the duration distribution of each singing technique." loading="lazy">
       </div>
     </div>
   </section>
@@ -1202,11 +1202,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="scooping_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/scooping-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="scooping.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/scooping-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1219,11 +1219,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="bending_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/bend-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="bending.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/bend-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1236,11 +1236,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="drop_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/drop-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="drop.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/drop-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1253,11 +1253,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="melisma_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/melisma-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--pitch);">SinTechSVS</div>
-            <audio controls preload="none"><source src="melisma.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/pitch/melisma-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1274,11 +1274,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="vocalfry_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/vocal-fry-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="vocalfry.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/vocal-fry-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1291,11 +1291,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="falsetto_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/falsetto-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="falsetto.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/falsetto-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1308,11 +1308,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="breathy_regular.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/breathy-regular.wav" type="audio/wav"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="breathy.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/breathy-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1325,11 +1325,11 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
         <div class="compare-pair">
           <div class="sample-cell">
             <div class="sample-label">Regular / Straight</div>
-            <audio controls preload="none"><source src="belting_regular.wav" type="audio/mpeg"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/belting-regular.wav" type="audio/mpeg"></audio>
           </div>
           <div class="sample-cell">
             <div class="sample-label" style="color:var(--timbre);">SinTechSVS</div>
-            <audio controls preload="none"><source src="belting.wav" type="audio/wav"></audio>
+            <audio controls preload="none"><source src="assets/audio/control/timbre/belting-sintechsvs.wav" type="audio/wav"></audio>
           </div>
         </div>
       </div>
@@ -1354,37 +1354,37 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
 
     <div class="compare-card" style="grid-template-columns:1fr;">
       <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="GT/2099003684.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="STan/2099003684.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="SinTechSVS_/2099003684.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2099003684.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2099003684.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2099003684.wav" type="audio/wav"></audio></div>
       </div>
     </div>
     <div class="compare-card" style="grid-template-columns:1fr;">
       <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="GT/2086003182.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="STan/2086003182.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="SinTechSVS_/2086003182.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2086003182.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2086003182.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2086003182.wav" type="audio/wav"></audio></div>
       </div>
     </div>
     <div class="compare-card" style="grid-template-columns:1fr;">
       <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="GT/2081002987.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="STan/2081002987.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="SinTechSVS_/2081002987.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2081002987.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2081002987.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2081002987.wav" type="audio/wav"></audio></div>
       </div>
     </div>
     <div class="compare-card" style="grid-template-columns:1fr;">
       <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="GT/2072002678.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="STan/2072002678.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="SinTechSVS_/2072002678.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2072002678.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2072002678.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2072002678.wav" type="audio/wav"></audio></div>
       </div>
     </div>
     <div class="compare-card" style="grid-template-columns:1fr;">
       <div class="compare-trio">
-        <div class="sample-cell"><audio controls preload="none"><source src="GT/2046001741.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="STan/2046001741.wav" type="audio/wav"></audio></div>
-        <div class="sample-cell"><audio controls preload="none"><source src="SinTechSVS_/2046001741.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/gt/2046001741.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/stan/2046001741.wav" type="audio/wav"></audio></div>
+        <div class="sample-cell"><audio controls preload="none"><source src="assets/audio/recommendation/sintechsvs/2046001741.wav" type="audio/wav"></audio></div>
       </div>
     </div>
   </section>
@@ -1407,7 +1407,7 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
       <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag">REG</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">FAL</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag">REG</span><span class="tag active">BRE</span></span></div>
       <div class="unseen-audio">
         <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="unseen1.wav" type="audio/wav"></audio>
+        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-1.wav" type="audio/wav"></audio>
       </div>
     </div>
 
@@ -1420,7 +1420,7 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
       <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">FAL</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">BEL</span></span></div>
       <div class="unseen-audio">
         <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="unseen2.wav" type="audio/wav"></audio>
+        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-2.wav" type="audio/wav"></audio>
       </div>
     </div>
 
@@ -1433,7 +1433,7 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
       <div class="seq-row"><span class="seq-label">Timbre Tech.</span><span class="seq-val"><span class="tag">REG</span><span class="tag">REG</span><span class="tag">REG</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BEL</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">BRE</span><span class="tag active">FAL</span><span class="tag active">BRE</span><span class="tag active">BRE</span></span></div>
       <div class="unseen-audio">
         <div class="sample-label">Synthesized Audio</div>
-        <audio controls preload="none"><source src="unseen3.wav" type="audio/wav"></audio>
+        <audio controls preload="none"><source src="assets/audio/unseen/unseen-sample-3.wav" type="audio/wav"></audio>
       </div>
     </div>
 
@@ -1449,16 +1449,14 @@ footer a:hover{color:var(--accent); border-bottom-color:var(--accent);}
     </div>
     <div class="citation-block">
       <button class="copy-btn" id="copyBibtex">Copy BibTeX</button>
-      <pre id="bibtexText" style="margin:0; white-space:pre-wrap;">@ARTICLE{10509739,
+      <pre id="bibtexText" style="margin:0; white-space:pre-wrap;">@article{zhao2024sintechsvs,
+  title={Sintechsvs: A singing technique controllable singing voice synthesis system},
   author={Zhao, Junchuan and Chetwin, Low Qi Hong and Wang, Ye},
   journal={IEEE/ACM Transactions on Audio, Speech, and Language Processing},
-  title={SinTechSVS: A Singing Technique Controllable Singing Voice Synthesis System},
+  volume={32},
+  pages={2641--2653},
   year={2024},
-  volume={},
-  number={},
-  pages={1-13},
-  keywords={Hidden Markov models;Annotations;Timbre;Task analysis;Deep learning;Synthesizers;Controllability;Singing voice synthesis;singing voice synthesis conditioned on singing techniques;singing technique classification;singing technique recommendation;metric;deep learning},
-  doi={10.1109/TASLP.2024.3394769}
+  publisher={IEEE}
 }</pre>
     </div>
   </section>
